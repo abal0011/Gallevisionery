@@ -1,0 +1,132 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 10px;
+    font-weight: 100;
+    font-family: "Roboto Lt", sans-serif;
+}
+
+/*
+    Start with styles for landing page.
+*/
+
+
+.container{
+    width: 90%;
+    margin: 0 auto;
+    color: #333;
+    text-align: center;
+    letter-spacing: 1rem;
+    text-transform: uppercase;
+}
+
+.container.title{
+    padding: 6rem;
+}
+
+.container h1{
+    font-size: 5rem;
+    margin-right: -1rem;
+}
+
+.container h2{
+    font-size: 6rem;
+    margin-right: -1rem;
+    color: #fff;
+    z-index: 10;
+    opacity: 0.9;
+}
+
+.container h2 a{
+    font-size: 6rem;
+    margin-right: -1rem;
+    color: #fff;
+    z-index: 10;
+    opacity: 0.9;
+}
+
+.container h3{
+    font-size: 4rem;
+    line-height: 0;
+    padding: 1rem 0;
+}
+
+.container h4{
+    font-size: 3rem;
+    padding: -1rem;
+}
+
+.container h5{
+    font-size: 1.5rem;
+    padding-top: 50px;
+    width: 1000px;
+    text-transform: lowercase;
+    text-transform: initial;
+    text-align: justify;
+    letter-spacing: 1.5px;
+    line-height: 1.8;
+}
+
+
+.container h6{
+    font-size: 1rem;
+    line-height: 0;
+    padding: 1rem 0;
+}
+
+.container p{
+    letter-spacing: 1.5px;
+    color: #fff;
+    font-style: initial;
+    padding: 1rem;
+    text-transform: lowercase;
+    text-transform: initial;
+}
+
+
+.between{
+    height:60rem;
+    position: relative;
+}
+
+.bg{
+    width: 100%;
+    background-color: rgba(0,0,0,.5);
+    padding: 2rem 0;
+}
+
+.words{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+.container  .top{
+    background-image: url(/Content/images/Homepage2.png)
+}
+
+.container  .middle{
+    background-image: url(/Content/images/Homepage1.png)
+}
+
+.container  .bottom{
+    background-image: url(/Content/images/Homepage3.png)
+}
+
+.container  .parallax{
+    width: 100%;
+    padding: 25rem 0;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    background-attachment: fixed;
+    overflow: hidden;
+
+}
+

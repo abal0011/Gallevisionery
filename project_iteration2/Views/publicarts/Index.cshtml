@@ -1,0 +1,165 @@
+﻿@model IEnumerable<project_iteration2.Models.publicart>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Gallery_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Monday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tuesday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Wednesday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Thursday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Friday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Saturday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sunday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Opening)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Painting)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sculpture)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Photography)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Installation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Performance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Visual)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Unisex)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Toilet_)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gallery_Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Website)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Street)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gallery_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Latitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Longitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Monday)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tuesday)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Wednesday)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Thursday)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Friday)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Saturday)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sunday)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Opening)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Painting)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sculpture)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Photography)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Installation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Performance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Visual)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Unisex)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Toilet_)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gallery_Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Website)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Street)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
