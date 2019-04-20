@@ -15,9 +15,35 @@ namespace project_iteration2.Controllers
         private publicartv1 db = new publicartv1();
 
         // GET: publicarts
-        public ActionResult Index()
+        public ViewResult Index(string GallType ,string street , string searchString)
         {
-            return View(db.publicarts.ToList());
+            var dropDownType = new List<string>();
+            var dropDownTypeQry = from t in db.publicarts
+                orderby t.Gallery_Type
+                select t.Gallery_Type;
+            dropDownType.AddRange(dropDownTypeQry.Distinct());
+            ViewBag.GallType = new SelectList(dropDownType);
+            var dropDownListStreet = new List<string>();
+            var streetQry = from d in db.publicarts orderby d.Street select d.Street;
+            dropDownListStreet.AddRange(streetQry.Distinct());
+            ViewBag.street = new SelectList(dropDownListStreet);
+            var publictemp = from s in db.publicarts
+                select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                publictemp = publictemp.Where(s => s.Gallery_Name.Contains(searchString));
+            }
+            if (!string.IsNullOrEmpty(street))
+            {
+                publictemp = publictemp.Where(x => x.Street == street);
+            }
+            if (!string.IsNullOrEmpty(GallType))
+            {
+                publictemp = publictemp.Where(x => x.Gallery_Type == GallType);
+            }
+
+
+            return View(publictemp.ToList());
         }
 
         // GET: publicarts/Details/5
