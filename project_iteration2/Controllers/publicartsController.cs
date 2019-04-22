@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using project_iteration2.Models;
+using PagedList;
 
 namespace project_iteration2.Controllers
 {
@@ -16,9 +17,22 @@ namespace project_iteration2.Controllers
         private publicartv1 db = new publicartv1();
 
         // GET: publicarts
-        public ViewResult Index(bool? toilet, bool? install, bool? visual, bool? perf,bool? photography, bool? sculpture, bool? painting,string GallType ,string street , string searchString)
+        public ViewResult Index(string sortOrder,int? page, string currentFilter, bool? toilet, bool? install, bool? visual, bool? perf,bool? photography, bool? sculpture, bool? painting,string GallType ,string street , string searchString)
         {
-            
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Gallery_Name" : "";
+            ViewBag.CurrentSort = sortOrder;
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+
             var dropDownType = new List<string>();
             var dropDownTypeQry = from t in db.publicarts
                 orderby t.Gallery_Type
@@ -77,10 +91,19 @@ namespace project_iteration2.Controllers
                 publictemp = publictemp.Where(s => s.Unisex.Contains("Y"));
             }
 
+            switch (sortOrder)
+            {
+                default:
+                    publictemp = publictemp.OrderBy(s => s.Gallery_Name);
+                    break;
+            }
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
 
 
 
-            return View(publictemp.ToList());
+            return View(publictemp.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: publicarts/Details/5
