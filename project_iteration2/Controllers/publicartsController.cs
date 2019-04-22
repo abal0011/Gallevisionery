@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -15,8 +16,9 @@ namespace project_iteration2.Controllers
         private publicartv1 db = new publicartv1();
 
         // GET: publicarts
-        public ViewResult Index(string GallType ,string street , string searchString)
+        public ViewResult Index(bool? toilet, bool? install, bool? visual, bool? perf,bool? photography, bool? sculpture, bool? painting,string GallType ,string street , string searchString)
         {
+            
             var dropDownType = new List<string>();
             var dropDownTypeQry = from t in db.publicarts
                 orderby t.Gallery_Type
@@ -41,6 +43,41 @@ namespace project_iteration2.Controllers
             {
                 publictemp = publictemp.Where(x => x.Gallery_Type == GallType);
             }
+
+            if (sculpture == true)
+
+            {
+                publictemp = publictemp.Where(s => s.Sculpture.Contains("Y"));
+            }
+            if (photography == true)
+
+            {
+                publictemp = publictemp.Where(s => s.Photography.Contains("Y"));
+            }
+
+            if (perf == true)
+            {
+                publictemp = publictemp.Where(s => s.Performance.Contains("Y"));
+            }
+
+            if ( painting == true)
+            {
+                publictemp = publictemp.Where(s => s.Painting.Contains("Y"));
+            }
+            if (install == true)
+            {
+                publictemp = publictemp.Where(s => s.Installation.Contains("Y"));
+            }
+            if (visual == true)
+            {
+                publictemp = publictemp.Where(s => s.Visual.Contains("Y"));
+            }
+            if (toilet == true)
+            {
+                publictemp = publictemp.Where(s => s.Unisex.Contains("Y"));
+            }
+
+
 
 
             return View(publictemp.ToList());

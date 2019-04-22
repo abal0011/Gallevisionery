@@ -3,200 +3,118 @@
 @{
     ViewBag.Title = "Details";
 }
+<style>
 
-<h2>Details</h2>
-
-<div>
-    <h4>publicart</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Gallery_Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Gallery_Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Latitude)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Latitude)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Longitude)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Longitude)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Monday)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Monday)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Tuesday)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Tuesday)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Wednesday)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Wednesday)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Thursday)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Thursday)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Friday)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Friday)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Saturday)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Saturday)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Sunday)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Sunday)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Opening)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Opening)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Painting)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Painting)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Sculpture)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Sculpture)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Photography)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Photography)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Installation)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Installation)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Performance)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Performance)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Visual)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Visual)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Unisex)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Unisex)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Toilet_)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Toilet_)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Gallery_Type)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Gallery_Type)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Website)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Website)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Street)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Street)
-        </dd>
-
-    </dl>
+   
+</style>
+<div class="temp"></div>
+<div class="first-block"></div>
+<div class="second-block"></div>
+ @{  var temp = @Model.Unisex;
+     double toilets = Convert.ToDouble(@Model.Toilet_);
+     
+ }
+<div class="loader">
+    <ul>
+        <li>L</li>
+        <li>O</li>
+        <li>A</li>
+        <li>D</li>
+        <li>I</li>
+        <li>N</li>
+        <li>G</li>
+    </ul>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div class="third-block"></div>
+
+<br/>
+<div class="logo">
+   <br/>
+</div>
+<div class="content">
+    <div class="heading">
+        <!-- INSERT DATA HERE -->
+        <span>@Model.Gallery_Name</span>
+    </div>
+    <div class="desc">
+        <!-- INSERT DATA HERE -->
+        <p>@Model.Description</p>
+    </div>
+    <div class="link">
+        <button type="button" onclick="window.location.href='@Model.Website'">VISIT WEBSITE</button>
+    </div>
+    <H4>Ameneties</H4>
+    @if (temp == "Y" && toilets >=  2)
+    {
+        <i class="material-icons" title="Accessible Toilets nearby: @Model.Toilet_" style="font-size:36px; color:red;">accessible</i>
+    }
+    else if(temp == "Y")
+    {
+        <i class="material-icons" title="Accessible Toilets nearby: @Model.Toilet_ " style="font-size:36px;">accessible</i>
+    }
+</div>
+<div class="img">
+    <img src="~/Content/picture/@Model.Id/image1.jpg"/>
+    
+</div>
+
+<div class="hours">
+     
+</div>
+
+
+
+
+@Html.ActionLink("Back to List", "Index")
+<script type="text/javascript">
+    TweenMax.from(".logo", 1.6, {
+        delay: 6.4,
+        opacity: 0,
+        y: 30,
+        ease: Expo.easeInOut
+    });
+
+    TweenMax.from(".download", 1.6, {
+        delay: 6.5,
+        opacity: 0,
+        y: 30,
+        ease: Expo.easeInOut
+    });
+
+    TweenMax.from(".heading", 1.6, {
+        delay: 6.6,
+        opacity: 0,
+        y: 30,
+        ease: Expo.easeInOut
+    });
+
+    TweenMax.from(".desc", 1.6, {
+        delay: 6.7,
+        opacity: 0,
+        y: 30,
+        ease: Expo.easeInOut
+    });
+
+    TweenMax.from("button", 1.6, {
+        delay: 6.8,
+        opacity: 0,
+        y: 30,
+        ease: Expo.easeInOut
+    });
+
+    TweenMax.from(".watch", 1.6, {
+        delay: 6.9,
+        opacity: 0,
+        y: 30,
+        rotation: 90,
+        ease: Expo.easeInOut
+    });
+
+    TweenMax.staggerFrom(".media ul li", 2, {
+        delay: 7,
+        opacity: 0,
+        y: 40,
+        ease: Expo.easeInOut
+    }, 0.2);
+
+</script>
