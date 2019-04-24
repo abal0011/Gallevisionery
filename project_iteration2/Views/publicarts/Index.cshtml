@@ -140,10 +140,40 @@
         float: left;
         margin: 100px auto;
     }
+    .hidden {
+        visibility: hidden;
+    }
+
+    .unhidden {
+        visibility: visible;
+    } 
 </style>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("GALLEVISIONERY", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    @Html.ActionLink("BACK", "Index", "Home")
+                </li>
+                <li>
+                    @Html.ActionLink("COMPARE-GALLERIES", "compare", "publicarts")
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
 <div class="row">
     <div class="col-md-12">
-        <img style="width:100%; height: 300px;" src="~/Content/images/banner1.png" />
+        <img style="width:100%; height: 300px; margin-top:40px  ;" src="~/Content/images/banner1.png" />
 
     </div>
 </div>
@@ -152,30 +182,56 @@
 <div class="row">
     @using (Html.BeginForm("Index","publicarts", FormMethod.Get))
     {<div class="md-form">
-            <p>
-
-                Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
-                Street dropdown: @Html.DropDownList("street", "All")
-                Type dropdown: @Html.DropDownList("GallType", "All")
-                Accesible Toilets: @Html.CheckBox("toilet", false)
-                <br />
-                <input type="radio" id="show" name="group">
-                <input type="radio" id="hide" name="group" checked>
-
-                <label for="show" class="show" style="top:50px;"></label>
-                <label for="hide" class="hide"></label>
-                <span id="content">
-                    painting: @Html.CheckBox("painting", false)
-                    Sculpture: @Html.CheckBox("sculpture", false)
-                    Performing Arts: @Html.CheckBox("perf", false)
-                    Photography: @Html.CheckBox("photography", false)
-                    Installation: @Html.CheckBox("install", false)
-                    Visual Arts: @Html.CheckBox("visual", false)
-                </span>
+         <p>
+                
+                 @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                 
+           
+                 Gallery Region @Html.DropDownList("street", null, "Gallery Region", new { @class = "btn dropdown-toggle" })
 
 
-                <input type="submit" value="Search" class="btn" style="position:static; float: right;" />
-            </p>
+                 Type dropdown: @Html.DropDownList("GallType", null, "Gallery Type", new { @class = "btn dropdown-toggle" })
+
+                 <label class="btn btn-light" style="position: relative; ">
+                     Accesible Toilets: @Html.CheckBox("toilet", false, new { @class = "custom-control-input" })
+                 </label>
+                 <input type="submit" value="Search" class="btn" style="position:static; float: right;" />
+                 <br />
+                 <br />
+                 <a href="javascript:unhide('hideDiv');">Show more</a>
+                 <div id="hideDiv" class="hidden" style="position:static;">
+                     <div class="form-group">
+
+                         <div class="btn-group">
+                             <label class="btn btn-light" style="position: relative; left:10%;">
+                                 @Html.CheckBox("painting", false) <b>painting</b>
+                             </label>
+                             <label class="btn btn-light" style="position: relative; left:15%;">
+                                 @Html.CheckBox("sculpture", false) <b>Sculpture</b>
+                             </label>
+                             <label class="btn btn-light" style="position: relative; left:20%;">
+                                 @Html.CheckBox("perf", false)<b>
+                                     Performing Arts
+                                 </b>
+                             </label>
+                             <label class="btn btn-light" style="position: relative; left:25%;">
+                                 @Html.CheckBox("photography", false) <b>Photography</b>
+                             </label>
+                             <label class="btn btn-light" style="position: relative; left:30%;">
+                                 @Html.CheckBox("install", false) <b>Installation</b>
+                             </label>
+                             <label class="btn btn-light" style="position: relative; left:35%;">
+                                 @Html.CheckBox("visual", false) <b>Visual Arts</b>
+                             </label>
+                         </div>
+
+                     </div>
+                 </div>
+
+
+
+
+</p>
         </div>
     }
     <hr />
@@ -191,6 +247,7 @@
                 <h4 class="card-subtitle"> <b> @Html.DisplayFor(modelItem => item.Gallery_Name , new{ sortOrder = ViewBag.NameSortParm })</b></h4>
 
                 <div>
+                    
                     @Html.ActionLink("Details", "Details", "publicarts", new {id = item.Id}, new {@class = "btn btn-dark "})
                 </div>
             </div>
@@ -203,3 +260,11 @@
     @Html.PagedListPager(Model, page => Url.Action("Index", 
         new { page, currentFilter = ViewBag.CurrentFilter }))
 
+<script>
+    function unhide(divID) {
+        var item = document.getElementById(divID);
+        if (item) {
+            item.className=(item.className=='hidden')?'unhidden':'hidden';
+        }
+    }
+</script>

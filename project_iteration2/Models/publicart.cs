@@ -66,5 +66,11 @@ namespace project_iteration2.Models
         public string Website { get; set; }
 
         public string Street { get; set; }
+
+        public int? NoOFCF { get; set; }
+
+        public int? NoOfBsn { get; set; }
+
+        public int? NoOfArt { get; set; }
     }
 }

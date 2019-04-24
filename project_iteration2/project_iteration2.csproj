@@ -158,6 +158,7 @@
     <Content Include="Content\images\Homepage2.png" />
     <Content Include="Content\images\Homepage3.png" />
     <Content Include="Content\landingpage.css" />
+    <Content Include="Content\lineChart.js" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\picture\10\image1.jpg" />
     <Content Include="Content\picture\10\image2.jpg" />
@@ -278,6 +279,7 @@
     <Content Include="Views\publicarts\Details.cshtml" />
     <Content Include="Views\publicarts\Edit.cshtml" />
     <Content Include="Views\publicarts\Index.cshtml" />
+    <Content Include="Views\publicarts\compare.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
