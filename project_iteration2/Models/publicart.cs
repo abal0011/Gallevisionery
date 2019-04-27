@@ -72,5 +72,21 @@ namespace project_iteration2.Models
         public int? NoOfBsn { get; set; }
 
         public int? NoOfArt { get; set; }
+
+        public int? MonPed { get; set; }
+
+        public int? TuesPed { get; set; }
+
+        public int? WedPed { get; set; }
+
+        public int? ThursPed { get; set; }
+
+        public int? FriPed { get; set; }
+
+        public int? SatPed { get; set; }
+
+        public int? SunPed { get; set; }
+
+        public int? Parking { get; set; }
     }
 }

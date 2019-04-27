@@ -85,6 +85,15 @@
      int? NoOfCf = @Model.NoOFCF;
      int? NoOfBsn = @Model.NoOfBsn;
      int? NoOfArt = @Model.NoOfArt;
+     int? transport = @Model.Parking;
+     int? foot = @Model.MonPed + @Model.TuesPed + @Model.WedPed + @Model.ThursPed + @Model.FriPed + @Model.SatPed + @Model.SunPed;
+     int? MonPed1 = @Model.MonPed;
+     int? TuesPed1 = @Model.TuesPed;
+     int? WedPed1 = @Model.WedPed;
+     int? ThursPed1 = @Model.ThursPed;
+     int? FriPed1 = @Model.FriPed;
+     int? SatPed1 = @Model.SatPed;
+     int? SunPed1 = @Model.SunPed;
  }
 <div class="loader">
     <ul>
@@ -268,11 +277,7 @@
 
 </script>
 <div id="secondSection" class="container">
-    <!--
-    <div class="deco">
-        <img src="deco1.png" alt="">
-    </div>
-    -->
+  
     <div class="backColor"></div>
     <h1>How many <span style="font-size: 3rem; color: black; text-shadow: 6px 12px #c5c5c5;">people </span>walk past this gallery every day?</h1>
     <h3>More people walking past on the days this gallery is open, the better for your business!</h3>
@@ -293,7 +298,7 @@
     </div>
     <!-- INSERT PEDESTRIAN CHART HERE-->
     <canvas id="lineChart" height="400" width="800"></canvas>
-    <script src="~/Content/lineChart.js"></script>
+    
 
     <!--<div class="thirdBanner"><img src="deco2.png" alt="" style="height: 200px; width: 100%;"></div> -->
     <div class="thirdBanner"></div>
@@ -319,7 +324,7 @@
     <canvas id="radarChart" style=" position: absolute;
     left: 200px;
     top: 200px;" height="400" width="800"></canvas>
-    <script src="~/Content/radarChart.js"></script>
+    
         
     <div class="forthBanner"><img src="~/Content/images/deco2.png" alt="" style="height: 200px; width: 100%;"></div>
 
@@ -343,6 +348,147 @@
 
 </div>
 <script>
+    // radar chart
+    var NoOfCF1 = @NoOfArt;
+    var toilet = @toilets;
+    var transport1 = @transport;
+    var foot1 = @foot;
+    var traffic1 = 0;
+    var entertainment = 0;
+    var accessible = 0;
+    var transportData1 = 0;
+    // Computation for the graph
+    if ((NoOfCF1) <= 10) {
+
+        entertainment = 1;
+    }
+    else if ((NoOfCF1) > 10 && NoOfCF1 <= 22) {
+        entertainment = 2;
+    }
+    else if (NoOfCF1 > 22 && NoOfCF1 <= 32) {
+        entertainment = 3;
+    }
+    else if (NoOfCF1 > 32 && NoOfCF1 <= 40) {
+        entertainment = 4;
+    } else {
+        entertainment = 5;
+    }
+    if ((toilet) == 0) {
+
+        accessible = 1;
+    }
+    else if (toilet == 1) {
+        accessible = 2;
+    }
+    else if (toilet == 2) {
+        accessible = 3;
+    }
+    else if (toilet == 3) {
+        accessible = 4;
+    } else {
+        accessible = 5;
+    }
+    if ((transport1) == 1) {
+
+        transportData1 = 1;
+    }
+    else if (transport1 > 1 && transport1 <= 5 ) {
+        transportData1 = 2;
+    }
+    else if (transport1 > 5 && transport1 <= 10) {
+        transportData1 = 3;
+    }
+    else if (transport1 > 10 && transport1 <= 307) {
+        transportData1 = 4;
+    } else {
+        transportData1 = 5;
+    }
+    if (foot1 <= 4000) {
+
+        traffic1 = 1;
+    }
+    else if (foot1 > 4000 && foot1 <= 6000) {
+        traffic1 = 2;
+    }
+    else if (foot1 > 6000 && foot1 <= 8000) {
+        traffic1 = 3;
+    }
+    else if (foot1 > 8000 && foot1 <= 12000) {
+        traffic1 = 4;
+    } else {
+        traffic1 = 5;
+    }
+    const CHART2 = document.getElementById("radarChart");
+    console.log(CHART2);
+    let radarChart = new Chart(CHART2, {
+        type: 'radar',
+        data: {
+            labels: ["Entertainment", "Foot Traffic", "Transportation", "Accessibility"],
+            datasets: [
+                {
+                    label: 'Rating of this gallery out of 5',
+                    backgroundColor: "rgba(75,192,92,0.4)",
+                    borderColor: "rgba(75,192,192,1)",
+                    borderWidth: 2,
+                    data: [entertainment,traffic1,transportData1,accessible]
+                }
+            ]
+        },
+        options: {
+            responsive: false,
+            maintainAspectRatio: this.maintainAspectRatio,
+        }
+    });
+
+    //line chart
+    var monPed1 = @MonPed1;
+    var tuesPed1 = @TuesPed1;
+    var wedPed1 = @WedPed1;
+    var thursPed1 = @ThursPed1;
+    var friPed1 = @FriPed1;
+    var satPed1 = @SatPed1;
+    var sunPed1 = @SunPed1;
+
+    const CHART = document.getElementById("lineChart");
+    console.log(CHART);
+    let lineChart = new Chart(CHART, {
+        type: 'line',
+        data: {
+            labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "sun"],
+            datasets: [
+                {
+                    label: "Pedestrian Count During A Week",
+                    fill: false,
+                    lineTension: 0.06,
+                    backgroundColor: "rgba(75,192,92,0.4)",
+                    borderColor: "rgba(75,192,192,1)",
+                    borderCapStyle: "butt",
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    boderJoinStyle: 'miter',
+                    pointBorderColor: "rgba(75,192,192,1)",
+                    pointBackgroundColor: "#fff",
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                    pointHoverBorderColor: "rgba(220,220,220,1)",
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 1,
+                    pointHitRadius: 10,
+                    data: [monPed1, tuesPed1, wedPed1, thursPed1, friPed1, satPed1, sunPed1],
+                }
+            ]
+        },
+        options: {
+            responsive: false,
+            maintainAspectRatio: this.maintainAspectRatio,
+        }
+
+    });
+
+
+
+    //map
     var longitude = @Model.Longitude;
     var latitude = @Model.Latitude;
     mapboxgl.accessToken = 'pk.eyJ1IjoiYXJhdmluZC1jeWJlciIsImEiOiJjam1tenl0ZGcwaW0wM3BrNDRkNHRmZzdpIn0.gYT_2NFoZwQ8SboZ1r6LcQ';
@@ -451,13 +597,13 @@
                 data: {
                     type: 'FeatureCollection',
                     features: [{
-                        type: 'Feature',
-                        properties: {},
-                        geometry: {
-                            type: 'Point',
-                            coordinates: start
+                            type: 'Feature',
+                            properties: {},
+                            geometry: {
+                                type: 'Point',
+                                coordinates: start
+                            }
                         }
-                    }
                     ]
                 }
             },

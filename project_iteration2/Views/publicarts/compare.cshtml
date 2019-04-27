@@ -55,19 +55,31 @@
         var tempList1 = new List<publicart>();
                
     }
-    @if (Model.Count() <= 2)
-    {
-        foreach (var item in Model)
+    
+    
+        @foreach (var item in Model)
         {
             tempList1.Add(item);
         }
-    }
+       
+    
     @{
-         
         int? NoOfCF1 = @tempList1[0].NoOFCF;
         int? NoOfArt1 = @tempList1[0].NoOfArt;
         int? NoOfBsn1 = @tempList1[0].NoOfBsn;
+        int? Toilet = Convert.ToInt32(@tempList1[0].Toilet_);
+        int? Transport1 = @tempList1[0].Parking;
+        int? Foot1 = (@tempList1[0].MonPed + @tempList1[0].TuesPed + @tempList1[0].WedPed + @tempList1[0].ThursPed + @tempList1[0].FriPed + @tempList1[0].SatPed + @tempList1[0].SunPed)
+            ;
+        int? NoOfCF2 = @tempList1[1].NoOFCF;
+        int? NoOfArt2 = @tempList1[1].NoOfArt;
+        int? NoOfBsn2 = @tempList1[1].NoOfBsn;
+        int? Toilet2 = Convert.ToInt32(@tempList1[1].Toilet_);
+        int? Transport2 = @tempList1[1].Parking;
+        int? Foot2 = (@tempList1[1].MonPed + @tempList1[1].TuesPed + @tempList1[1].WedPed + @tempList1[1].ThursPed + @tempList1[1].FriPed + @tempList1[1].SatPed + @tempList1[1].SunPed)
+            ;
     }
+  
 
 
     <div class="split">
@@ -128,6 +140,10 @@
             {
                 <span>Photography</span>
             }
+            @if (@tempList1[0].Visual == "Y")
+            {
+                <span> Visual Art</span>
+            }
             <br>
         </p>
     </div>
@@ -159,6 +175,10 @@
             {
                 <span>Photography</span>
             }
+            @if (@tempList1[1].Visual == "Y")
+            {
+                <span> Visual Art</span>
+            }
             <br>
         </p>
     </div>
@@ -183,9 +203,25 @@
     <!-- INSERT AMENITY CHART HERE -->
     <canvas class="col-sm-4" id="radarChart" height="300" width="300"></canvas>
     <script>
-        
-            var NoOfCF1 = @NoOfCF1;
-            var entertainment = 0;
+        // for first gallery
+        var NoOfCF1 = @NoOfCF1;
+        var toilet = @Toilet;
+        var transport1 = @Transport1;
+        var foot1 = @Foot1;
+        var traffic1 = 0;
+        var entertainment = 0;
+        var accessible = 0;
+        var transportData1 = 0;
+        // for second gallery
+        var NoOfCF2 = @NoOfCF2;
+        var toilet2 = @Toilet2;
+        var transport2 = @Transport2;
+        var foot2 = @Foot2;
+        var traffic2 = 0;
+        var entertainment2 = 0;
+        var accessible2 = 0;
+        var transportData2 = 0;
+        //first gallery
         if ((NoOfCF1) <= 10) {
 
             entertainment = 1;
@@ -201,6 +237,112 @@
         } else {
             entertainment = 5;
         }
+        if ((toilet) == 0) {
+
+            accessible = 1;
+        }
+        else if (toilet == 1) {
+            accessible = 2;
+        }
+        else if (toilet == 2) {
+            accessible = 3;
+        }
+        else if (toilet == 3) {
+            accessible = 4;
+        } else {
+           accessible = 5;
+        }
+        if ((transport1) == 1) {
+
+            transportData1 = 1;
+        }
+        else if (transport1 > 1 && transport1 <= 5 ) {
+            transportData1 = 2;
+        }
+        else if (transport1 > 5 && transport1 <= 10) {
+            transportData1 = 3;
+        }
+        else if (transport1 > 10 && transport1 <= 307) {
+            transportData1 = 4;
+        } else {
+            transportData1 = 5;
+        }
+        if (foot1 <= 4000) {
+
+            traffic1 = 1;
+        }
+        else if (foot1 > 4000 && foot1 <= 6000) {
+            traffic1 = 2;
+        }
+        else if (foot1 > 6000 && foot1 <= 8000) {
+            traffic1 = 3;
+        }
+        else if (foot1 > 8000 && foot1 <= 12000) {
+            traffic1 = 4;
+        } else {
+            traffic1 = 5;
+        }
+        // second gallery
+        if ((NoOfCF2) <= 10) {
+
+            entertainment2 = 1;
+        }
+        else if ((NoOfCF2) > 10 && NoOfCF2 <= 22) {
+            entertainment2 = 2;
+        }
+        else if (NoOfCF2 > 22 && NoOfCF2 <= 32) {
+            entertainment2 = 3;
+        }
+        else if (NoOfCF2 > 32 && NoOfCF2 <= 40) {
+            entertainment2 = 4;
+        } else {
+            entertainment2 = 5;
+        }
+        if ((toilet2) == 0) {
+
+            accessible2 = 1;
+        }
+        else if (toilet2 == 1) {
+            accessible2 = 2;
+        }
+        else if (toilet2 == 2) {
+            accessible2 = 3;
+        }
+        else if (toilet2 == 3) {
+            accessible2 = 4;
+        } else {
+            accessible2 = 5;
+        }
+        if ((transport2) == 1) {
+
+            transportData2 = 1;
+        }
+        else if (transport2 > 1 && transport2 <= 5 ) {
+            transportData2 = 2;
+        }
+        else if (transport2 > 5 && transport2 <= 10) {
+            transportData2 = 3;
+        }
+        else if (transport2 > 10 && transport2 <= 307) {
+            transportData2 = 4;
+        } else {
+            transportData2 = 5;
+        }
+        if (foot2 <= 4000) {
+
+            traffic2 = 1;
+        }
+        else if (foot2 > 4000 && foot2 <= 6000) {
+            traffic2 = 2;
+        }
+        else if (foot2 > 6000 && foot2 <= 8000) {
+            traffic2 = 3;
+        }
+        else if (foot2 > 8000 && foot2 <= 12000) {
+            traffic2 = 4;
+        } else {
+            traffic2 = 5;
+        }
         var ctx = document.getElementById('radarChart').getContext('2d');
         var chart = new Chart(ctx, {
             // The type of chart we want to create
@@ -211,10 +353,17 @@
                 labels: ['Entertainment', 'Accessibility', 'Transportation','Foot Traffic'],
                 datasets: [{
                     label: '@tempList1[0].Gallery_Name',
-                    backgroundColor: 'rgb(255, 99, 132)',
+                    backgroundColor: 'rgb(255, 99, 132,0.4)',
                     borderColor: 'rgb(255, 99, 132)',
-                    data: [entertainment, 10, 5, 2]
-                }]
+                    data: [entertainment, accessible, transportData1, traffic1]
+                },
+                    {
+                        label: '@tempList1[1].Gallery_Name',
+                        backgroundColor: 'rgb(54,162,235,0.4)',
+                        borderColor: 'rgb(54,162,235)',
+                        fill: 'true',
+                        data: [entertainment2, accessible2,transportData2,traffic2]
+                    }]
             },
 
             // Configuration options go here
