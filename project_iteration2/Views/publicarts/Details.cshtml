@@ -94,6 +94,22 @@
      int? FriPed1 = @Model.FriPed;
      int? SatPed1 = @Model.SatPed;
      int? SunPed1 = @Model.SunPed;
+
+     int? MonPed2 = @Model.MonPed2;
+     int? TuesPed2 = @Model.TuesPed2;
+     int? WedPed2 = @Model.WedPed2;
+     int? ThursPed2 = @Model.ThursPed2;
+     int? FriPed2 = @Model.FriPed2;
+     int? SatPed2 = @Model.SatPed2;
+     int? SunPed2 = @Model.SunPed2;
+
+     int? MonPed3 = @Model.MonPed3;
+     int? TuesPed3 = @Model.TuesPed3;
+     int? WedPed3 = @Model.WedPed3;
+     int? ThursPed3 = @Model.ThursPed3;
+     int? FriPed3 = @Model.FriPed3;
+     int? SatPed3 = @Model.SatPed3;
+     int? SunPed3 = @Model.SunPed3;
  }
 <div class="loader">
     <ul>
@@ -448,7 +464,22 @@
     var friPed1 = @FriPed1;
     var satPed1 = @SatPed1;
     var sunPed1 = @SunPed1;
-
+    // line chart variables 2 
+    var monPed2 = @MonPed2;
+    var tuesPed2 = @TuesPed2;
+    var wedPed2 = @WedPed2;
+    var thursPed2 = @ThursPed2;
+    var friPed2 = @FriPed2;
+    var satPed2 = @SatPed2;
+    var sunPed2 = @SunPed2;
+    //line chart variables 3
+    var monPed3 = @MonPed3;
+    var tuesPed3 = @TuesPed3;
+    var wedPed3 = @WedPed3;
+    var thursPed3 = @ThursPed3;
+    var friPed3 = @FriPed3;
+    var satPed3 = @SatPed3;
+    var sunPed3 = @SunPed3;
     const CHART = document.getElementById("lineChart");
     console.log(CHART);
     let lineChart = new Chart(CHART, {
@@ -457,7 +488,7 @@
             labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "sun"],
             datasets: [
                 {
-                    label: "Pedestrian Count During A Week",
+                    label: "Pedestrian Count During last few weeks",
                     fill: false,
                     lineTension: 0.06,
                     backgroundColor: "rgba(75,192,92,0.4)",
@@ -475,7 +506,48 @@
                     pointHoverBorderWidth: 2,
                     pointRadius: 1,
                     pointHitRadius: 10,
-                    data: [monPed1, tuesPed1, wedPed1, thursPed1, friPed1, satPed1, sunPed1],
+                    data: [monPed1, tuesPed1, wedPed1, thursPed1, friPed1, satPed1, sunPed1]
+                }, {
+                    label: "Pedestrian Count in next 1 week",
+                    fill: false,
+                    lineTension: 0.06,
+                    backgroundColor: "rgba(75,192,92,0.4)",
+                    borderColor: "rgba(75,192,192,1)",
+                    borderCapStyle: "butt",
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    boderJoinStyle: 'miter',
+                    pointBorderColor: "rgba(75,192,192,1)",
+                    pointBackgroundColor: "#fff",
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                    pointHoverBorderColor: "rgba(220,220,220,1)",
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 1,
+                    pointHitRadius: 10,
+                    data: [monPed2, tuesPed2, wedPed2, thursPed2, friPed2, satPed2, sunPed2]
+                },
+                {
+                    label: "Pedestrian Count in next 4 Weeks",
+                    fill: false,
+                    lineTension: 0.06,
+                    backgroundColor: "rgba(75,192,92,0.4)",
+                    borderColor: "rgba(75,192,192,1)",
+                    borderCapStyle: "butt",
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    boderJoinStyle: 'miter',
+                    pointBorderColor: "rgba(75,192,192,1)",
+                    pointBackgroundColor: "#fff",
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                    pointHoverBorderColor: "rgba(220,220,220,1)",
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 1,
+                    pointHitRadius: 10,
+                    data: [monPed3, tuesPed3, wedPed3, thursPed3, friPed3, satPed3, sunPed3]
                 }
             ]
         },

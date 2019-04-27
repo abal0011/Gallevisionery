@@ -88,5 +88,33 @@ namespace project_iteration2.Models
         public int? SunPed { get; set; }
 
         public int? Parking { get; set; }
+        public int? MonPed2 { get; set; }
+
+        public int? TuesPed2 { get; set; }
+
+        public int? WedPed2 { get; set; }
+
+        public int? ThursPed2 { get; set; }
+
+        public int? FriPed2 { get; set; }
+
+        public int? SatPed2 { get; set; }
+
+        public int? SunPed2 { get; set; }
+        public int? MonPed3 { get; set; }
+
+        public int? TuesPed3 { get; set; }
+
+        public int? WedPed3 { get; set; }
+
+        public int? ThursPed3 { get; set; }
+
+        public int? FriPed3 { get; set; }
+
+        public int? SatPed3 { get; set; }
+
+        public int? SunPed3 { get; set; }
+
+
     }
 }

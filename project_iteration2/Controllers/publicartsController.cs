@@ -189,7 +189,7 @@ namespace project_iteration2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Gallery_Name,Latitude,Longitude,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday,Opening,Painting,Sculpture,Photography,Installation,Performance,Visual,Unisex,Toilet_,Gallery_Type,Description,Website,Street,NoOFCF,NoOfBsn,NoOfArt, MonPed, TuesPed, WedPed, ThursPed, FriPed, SatPed, SunPed, Parking")] publicart publicart)
+        public ActionResult Edit([Bind(Include = "Id,Gallery_Name,Latitude,Longitude,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday,Opening,Painting,Sculpture,Photography,Installation,Performance,Visual,Unisex,Toilet_,Gallery_Type,Description,Website,Street,NoOFCF,NoOfBsn,NoOfArt, MonPed, TuesPed, WedPed, ThursPed, FriPed, SatPed, SunPed, Parking,MonPed2,TuesPed2,WedPed2,ThursPed2,FriPed2,SatPed2,SunPed2,MonPed3,TuesPed3,WedPed3,ThursPed3,FriPed3,SatPed3,SunPed3")] publicart publicart)
         {
             if (ModelState.IsValid)
             {
