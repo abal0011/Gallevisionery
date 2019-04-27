@@ -3,6 +3,7 @@ html, body {
     padding: 0;
     width: 100%;
     height: 100vh;
+
 }
 
 body {
@@ -393,4 +394,31 @@ img {
     position: absolute;
     left: 100px;
     top: 180px;
+}
+
+#thirdSection {
+    position: relative;
+    top: 200vh;
+    margin: 5rem;
+}
+
+.thirdBanner {
+    position: absolute;
+    top: 100vh;
+    margin-top: -5rem;
+    background-image: url("parallax1.png");
+    height: 100px; 
+    width: 100%;
+    padding: 25rem 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+
+#radarChart {
+    position: absolute;
+    left: 200px;
+    top: 200px;
 }

@@ -1,0 +1,270 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-weight: 100;
+    font-family: "Roboto Lt", sans-serif !important;
+    overflow-x: hidden;
+}
+
+/* SECTION 1 STYLING STARTS HERE */
+
+.section1 {
+    position: absolute;
+    width: 100%;
+    margin: 0;
+}
+
+.split{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.left, .right{
+    top: 0;
+    position: absolute;
+    height: 100%;
+    width: 50%;
+}
+
+.left{
+    background: #ffffff;
+}
+
+.right {
+    position: absolute;
+    background: #f0f0f0;
+    height: 100vh;
+    left: 50%;
+    animation: expandNow 2s forwards;
+    animation-delay: 0.2s;
+}
+@keyframes expandNow {
+    0% {
+          width: 0%;
+    }
+
+    100% {
+          width: 64%;
+    }
+}
+
+.logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 2em;
+    animation: expandPic 3s forwards;
+    animation-delay: 0;
+}
+
+.download{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 2em;
+    font-size: 18px;
+    animation: expandPic 3s forwards;
+    animation-delay: 0;
+}
+
+.pic1 img {
+    position: absolute;
+    top: 100px;
+    left: 150px;
+    height: 200px;
+    width: auto;
+    padding: 0;
+    animation: expandPic 3s linear forwards;
+    animation-delay: 0;
+}
+
+.pic2 img {
+    position: absolute;
+    top: 100px;
+    right: 150px;
+    height: 200px;
+    width: auto;
+    padding: 0;
+    animation: expandPic 3s linear forwards;
+    animation-delay: 0;
+}
+
+@keyframes expandPic {
+    0% {
+        width: 0;
+        opacity: 0;
+    }
+  
+    100% {
+        opacity: 1;
+    }
+}
+
+.heading h3{
+    font-family: "Roboto Lt", sans-serif;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+
+.heading1 {
+    position: relative;
+    top: 350px;
+    left: 250px;
+    padding: 0;
+    animation: expandWord 3s linear forwards;
+    animation-delay: 0;
+}
+
+.heading2 {
+    position: relative;
+    top: 350px;
+    left: 250px;
+    padding: 0;
+    animation: expandWord 3s linear forwards;
+    animation-delay: 0;
+}
+
+
+.desc1 {
+    position: absolute;
+    top: 400px;
+    left: 150px;
+    animation: expandWord 3s linear forwards;
+    animation-delay: 0;
+}
+
+.desc2 {
+    position: absolute;
+    top: 400px;
+    right: 270px;
+    animation: expandWord 3s linear forwards;
+    animation-delay: 0;
+}
+
+.desc p {
+    line-height: 25px;
+    font-family: "Roboto Lt", sans-serif;
+    font-weight: lighter;
+}
+
+
+
+@keyframes expandWord {
+    0% {
+        opacity: 0;
+    }
+  
+    100% {
+        opacity: 1;
+    }
+}
+
+.return1 {
+    position: absolute;
+    left: 200px;
+    top: 570px;
+}
+
+.return2 {
+    position: absolute;
+    right: 200px;
+    top: 570px;
+}
+.return1 button {
+    font-family: "Roboto Lt", sans-serif;
+    border-radius: none;
+    padding: 16px 40px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: #97BBCD;
+    color: #fff;
+    animation: expandWord 3s linear forwards;
+    animation-delay: 0;
+}
+
+.return2 button {
+    font-family: "Roboto Lt", sans-serif;
+    border-radius: none;
+    padding: 16px 40px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: #97BBCD;
+    color: #fff;
+    animation: expandWord 3s linear forwards;
+    animation-delay: 0;
+}
+
+
+
+.banner {
+    position: absolute;
+    top: 100vh;
+    background-image: url("/Content/compare/parallax3.png");
+    height: auto; 
+    width: 100%;
+    padding: 25rem 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+
+
+/* SECTION 2 STYLING STARTS HERE */
+
+.section2 {
+    position: absolute;
+    top: 100vh;
+    margin: 0;
+    width: 100%;
+    /*background-color: rgb(195, 216, 224);
+    height: 100vh;*/
+}
+
+/* NOT NEEDED FOR NOW ----- D3 IS TOO HARD FML
+#test {
+    position: absolute;
+    top: 200px;
+    left: 300px;
+}
+*/
+
+
+.random p {
+    font-size: 12px;
+    position: absolute;
+    right: 0;
+}
+
+.secondHeading h1 {
+    font-family: "Roboto Lt", sans-serif;
+    color: #3b3a3a;
+    text-align: center;
+    margin-top: 200px;
+}
+
+#radarChart {
+    position: relative;
+    top:100px;
+    left: 40%;
+    
+}
+
+
+
+.versus {
+    height: 100vh;
+    width: 100%;
+   
+}
+
+
+.versus p {
+    text-align: center;
+    margin-top: 600px;
+}  
+

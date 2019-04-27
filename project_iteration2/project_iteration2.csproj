@@ -153,7 +153,17 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\compare\1.png" />
+    <Content Include="Content\compare\2.png" />
+    <Content Include="Content\compare\logo.png" />
+    <Content Include="Content\compare\parallax2.png" />
+    <Content Include="Content\compare\parallax3.png" />
+    <Content Include="Content\compare\radarChart.js" />
+    <Content Include="Content\compare\radars.js" />
+    <Content Include="Content\compare\testingRadarChart.js" />
+    <Content Include="Content\comparison.css" />
     <Content Include="Content\images\banner1.png" />
+    <Content Include="Content\images\deco2.png" />
     <Content Include="Content\images\Homepage1.png" />
     <Content Include="Content\images\Homepage2.png" />
     <Content Include="Content\images\Homepage3.png" />
@@ -239,6 +249,7 @@
     <Content Include="Content\picture\9\image1.jpg" />
     <Content Include="Content\picture\9\image2.jpg" />
     <Content Include="Content\picture\9\image3.jpg" />
+    <Content Include="Content\radarChart.js" />
     <Content Include="Content\temp.gif" />
     <Content Include="Content\thirdPg.css" />
     <Content Include="favicon.ico" />

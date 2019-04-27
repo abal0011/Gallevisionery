@@ -1,108 +1,12 @@
-﻿@model IEnumerable<project_iteration2.Models.publicart>
+﻿@using project_iteration2.Models
+@model IEnumerable<project_iteration2.Models.publicart>
 
 @{
     ViewBag.Title = "compare";
 }
 
-   
-<style>
-    .namesContainer {
-        display: flex;
-        order: 0;
-        text-size-adjust: 100%;
-    }
+<link rel="stylesheet" href="~/Content/comparison.css">
 
-
-    .vsSeparator {
-        border-left: 1px solid #bebebe;
-        bottom: 0;
-        height: 100%;
-        left: 50%;
-        position: absolute;
-    }
-
-        .vsSeparator span {
-            background-color: #fff;
-            border: 1px solid #bebebe;
-            border-radius: 15px;
-            color: #616161;
-            font-weight: 700;
-            height: 30px;
-            left: -17px;
-            line-height: 29px;
-            position: absolute;
-            text-align: center;
-            top: 50%;
-            width: 30px;
-        }
-
-    .nameContainer  {
-        padding-top: 10%;
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        line-height: 18.4px;
-        min-width: 50%;
-        padding-left: 15%;
-        padding-right: 15%;
-        width: 50%;
-    }
-
-    .nameReviewContainer {
-        display: block;
-    }
-
-    .picturesContainer {
-        display: flex;
-        order: 1;
-        position: relative;
-        overflow-x: hidden;
-        overflow-y: hidden;
-        text-size-adjust: 100%;
-    }
-
-    .pictureContainer {
-        display: block;
-        min-width: 50%;
-        text-size-adjust: 100%;
-        width: 50%;
-        line-height: 1.15;
-    }
-
-    .image {
-        display: block;
-        height: 100%;
-        line-height: 1.15;
-        margin-top: auto;
-        margin-bottom: auto;
-        margin-left: auto;
-        margin-right: auto;
-        width: 80%;
-        text-align: center;
-        overflow-x: hidden;
-        overflow-y: hidden;
-    }
-
-    .comparisonTitle {
-        background-color: #161616;
-        bottom: -8px;
-        content: "";
-        height: 1px;
-        left: calc(50% - 20px);
-        position: absolute;
-        width: 40px;
-        text-align: center;
-        text-size-adjust: 100%;
-        margin-top: 15px;
-    }
-
-    .section1 {
-        display: block;
-        position: absolute;
-        width: 100%;
-        bottom: -150px;
-    }
-</style>  
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -123,79 +27,277 @@
         </div>
     </div>
 </div>
-<div class="CompareField row" style="padding-top: 5%;">
+<div class="CompareField row" style="padding-top: 75px; padding-bottom: 25px;">
     @using (Html.BeginForm())
     {
         <p>
-            
+            <label class="col-sm-3"style="position: relative; left:15%;">
                 @Html.DropDownList("option1", "All")
-            
-                
-                @Html.DropDownList("option2", "All")
-               
-            
-            <input type="submit" value="Filter" style="position:absolute; left: 48.25%; z-index: 1;" />
+            </label>
+            <label class="col-sm-3"style="position: relative; left:15%;">
+            @Html.DropDownList("option2", "All")
+            </label>
+
+            <input class="col-sm-4 btn btn-dark" type="submit" value="COMPARE" style="position: relative; left:20%;" />
         </p>
     }
 </div>
-    <div class="namesContainer">
-        <div class="nameContainer" style="transform:translateX(0%)">
-            <div class="nameReviewContainer">
 
-                
-              
-                @if (Model.Count() <= 2)
-                {
-                    foreach (var item in Model)
-                     {
-                    
-                         <h4 class="card-subtitle"> <b> @Html.DisplayFor(modelItem => item.Gallery_Name)</b></h4>
 
-                     }
-                }
-                
-            </div>
-        </div>
-        <div class="nameContainer" style="transform:translateX(0%)">
-            <div class="nameReviewContainer">
-                <p>
-                    right compare
-                </p>
-            </div>
-        </div>
+
+
+
+
+
+<!-- FIRST SECTION STARTS HERE -->
+<div class="section1">
+    @{
+        var tempList1 = new List<publicart>();
+               
+    }
+    @if (Model.Count() <= 2)
+    {
+        foreach (var item in Model)
+        {
+            tempList1.Add(item);
+        }
+    }
+    @{
+         
+        int? NoOfCF1 = @tempList1[0].NoOFCF;
+        int? NoOfArt1 = @tempList1[0].NoOfArt;
+        int? NoOfBsn1 = @tempList1[0].NoOfBsn;
+    }
+
+
+    <div class="split">
+        <div class="left"></div>
+        <div class="right"></div>
     </div>
-    <div class="picturesContainer">
-        <div class="pictureContainer" style="transform:translateX(0%)">
-            <div class="image">
-                <p>
-                    picture left
-                </p>
+   
+    @if (Model.Count() == 2)
+    {   <div class="row">
+        <div class="pic1 col-sm-6"><img class="col-sm-6" src="~/Content/picture/@tempList1[0].Id/image1.jpg" alt=""></div>
+        <div class="pic2 col-sm-6"><img class="col-sm-6"src="~/Content/picture/@tempList1[1].Id/image1.jpg" alt=""></div>
+            
+        </div>}
+        <div class="row">
+            <div class="col-sm-6">
+                <!-- INSERT GALLERY 1 NAME HERE -->
+                <h4  style="text-align: center;">
+                    <b >
+                        @if (Model.Count() == 2)
+                        {@tempList1[0].Gallery_Name}
+                    </b>
+                </h4>
             </div>
-
-        </div>
-        <div class="pictureContainer" style="transform:translateX(0%)">
-            <div class="image">
-
-                <p>
-                    picture right
-                </p>
+            <div class="col-sm-6">
+                <!-- INSERT GALLERY 2 NAME HERE -->
+                <h4  style="text-align: center;">
+                    <b >
+                        @if (Model.Count() == 2)
+                        {@tempList1[1].Gallery_Name}
+                    </b>
+                </h4>
             </div>
         </div>
-    </div>
-    <div class="vsSeparator" style="left:50%;">
-        <span>vs</span>
-    </div>
-    <div class="comparisonTitle">
+@if (Model.Count() == 2)
+{
+    <div class="desc1">
+        <!-- INSERT DATA HERE, MAKE SURE THEY ARE CALLED FROM BOTH COLUMNS FROM THE DATASET -->
         <p>
-            hey there
+            <b> @tempList1[0].Gallery_Type Gallery </b><br>
+                                               <b>Suitable Art:</b>
+            @if (@tempList1[0].Painting == "Y")
+            {
+                <span>Painting</span>
+            }
+            @if (@tempList1[0].Performance == "Y")
+            {
+                <span>Performance</span>
+            }
+            @if (@tempList1[0].Installation == "Y")
+            {
+                <span>Installation</span>
+            }
+            @if (@tempList1[0].Sculpture == "Y")
+            {
+                <span>Sculpture</span>
+            }
+            @if (@tempList1[0].Photography == "Y")
+            {
+                <span>Photography</span>
+            }
+            <br>
         </p>
     </div>
+}
+@if (Model.Count() == 2)
+{
+    <div class="desc2">
+        <!-- INSERT DATA HERE, MAKE SURE THEY ARE CALLED FROM BOTH COLUMNS FROM THE DATASET -->
+        <p>
+            <b> @tempList1[1].Gallery_Type Gallery</b> <br>
+                                                       <b> Suitable Art:</b>
+            @if (@tempList1[1].Painting == "Y")
+            {
+                <span>Painting</span>
+            }
+            @if (@tempList1[1].Performance == "Y")
+            {
+                <span>Performance</span>
+            }
+            @if (@tempList1[1].Installation == "Y")
+            {
+                <span>Installation</span>
+            }
+            @if (@tempList1[1].Sculpture == "Y")
+            {
+                <span>Sculpture</span>
+            }
+            @if (@tempList1[1].Photography == "Y")
+            {
+                <span>Photography</span>
+            }
+            <br>
+        </p>
+    </div>
+}
+  
 
+  
+</div>
+<!-- JUST A BACKGROUND PIC FOR PARALLAX EFFECT-->
+<div class="banner"></div>
 
-<section class="section1">
-    <h1>
-        section below
-    </h1>
-</section>
+<!-- JUST A BACKGROUND PIC FOR PARALLAX EFFECT-->
+<div class="banner"></div>
 
+<!-- SECOND SECTION STARTS HERE -->
+<div class="section2">
+ 
+    <div class="secondHeading">
+        <h1>/ HERE VERSUS THERE</h1>
+    </div>
+
+    <!-- INSERT AMENITY CHART HERE -->
+    <canvas class="col-sm-4" id="radarChart" height="300" width="300"></canvas>
+    <script>
+        
+            var NoOfCF1 = @NoOfCF1;
+            var entertainment = 0;
+        if ((NoOfCF1) <= 10) {
+
+            entertainment = 1;
+        }
+        else if ((NoOfCF1) > 10 && NoOfCF1 <= 22) {
+            entertainment = 2;
+        }
+        else if (NoOfCF1 > 22 && NoOfCF1 <= 32) {
+            entertainment = 3;
+        }
+        else if (NoOfCF1 > 32 && NoOfCF1 <= 40) {
+            entertainment = 4;
+        } else {
+            entertainment = 5;
+        }
+        var ctx = document.getElementById('radarChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'radar',
+
+            // The data for our dataset
+            data: {
+                labels: ['Entertainment', 'Accessibility', 'Transportation','Foot Traffic'],
+                datasets: [{
+                    label: '@tempList1[0].Gallery_Name',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [entertainment, 10, 5, 2]
+                }]
+            },
+
+            // Configuration options go here
+            options: {responsive:false}
+        });
+    </script>
+
+    <!-- INSERT CALCULATED DATA HERE -->
+    <div class="versus" style="background-image:url(/Content/compare/parallax2.png)">
+        @if (Model.Count() == 2)
+        {
+            <p>
+                <span><i class="material-icons">accessible</i></span>
+                <span>@tempList1[0].Gallery_Name </span> <!-- INSERT THE GALLERY WITH HIGHER RATING OF ACCESSIBILITY HERE -->
+                has
+                <span><b> @tempList1[0].Toilet_ </b></span>
+                accessible/unisex toilets and
+                <span> @tempList1[1].Gallery_Name </span>
+                has <span><b>@tempList1[1].Toilet_</b></span>
+                accessible/unisex toilets.
+            
+                <br/>
+                <br/>
+                <span><i class="material-icons">free_breakfast</i></span>
+                <span>@tempList1[0].Gallery_Name </span> <!-- INSERT THE GALLERY WITH HIGHER RATING OF ACCESSIBILITY HERE -->
+                has
+                <span><b> @tempList1[0].NoOFCF </b></span>
+                number of cafes nearby and
+                <span> @tempList1[1].Gallery_Name </span>
+                has <span><b>@tempList1[1].NoOFCF</b></span>
+                <br/>
+                <br/>
+                <span><i class="material-icons">collections</i></span>
+                <span>@tempList1[0].Gallery_Name </span> <!-- INSERT THE GALLERY WITH HIGHER RATING OF ACCESSIBILITY HERE -->
+                has
+                <span><b> @tempList1[0].NoOfArt </b></span>
+                public artworks around the Gallery
+                <span> @tempList1[1].Gallery_Name </span>
+                has <span><b>@tempList1[1].NoOfArt</b></span>
+                <br/>    
+                <br/>
+                <span><i class="material-icons">business_center</i></span>
+                <span>@tempList1[0].Gallery_Name </span> <!-- INSERT THE GALLERY WITH HIGHER RATING OF ACCESSIBILITY HERE -->
+                has
+                <span><b> @tempList1[0].NoOfBsn </b></span>
+                office blocks nearby
+                <span> @tempList1[1].Gallery_Name </span>
+                has <span><b>@tempList1[1].NoOfBsn</b></span>  
+                <br/>
+                <br/>
+                <h4 style="text-align: center;"><b> /  C O N C L U S I O N </b></h4>
+                <br/>
+                <h4 style="text-align: center;">
+                    @if (Convert.ToDouble(@tempList1[0].Toilet_) > Convert.ToDouble(@tempList1[1].Toilet_))
+                    {<b>@tempList1[0].Gallery_Name</b>}
+                    else
+                    {<b>@tempList1[1].Gallery_Name</b>} is more suited for <b>Accesible/Unisex Toilet</b> needs.
+                </h4>
+                <br/>
+                <h4 style="text-align: center;">
+                    @if (Convert.ToDouble(@tempList1[0].NoOFCF) > Convert.ToDouble(@tempList1[1].NoOFCF))
+                    {<b>@tempList1[0].Gallery_Name</b>}
+                    else
+                    {<b>@tempList1[1].Gallery_Name</b>} is more suited to pick for <b>Social</b> area.
+                </h4>
+                <br/>
+                <h4 style="text-align: center;">
+                    @if (Convert.ToDouble(@tempList1[0].NoOfArt) > Convert.ToDouble(@tempList1[1].NoOfArt))
+                    {<b>@tempList1[0].Gallery_Name</b>}
+                    else
+                    {<b>@tempList1[1].Gallery_Name</b>} is more suited to pick for <b>Tourist Artsy</b> area.
+                </h4>
+                <br/>
+                <h4 style="text-align: center;">
+                    @if (Convert.ToDouble(@tempList1[0].NoOfBsn) > Convert.ToDouble(@tempList1[1].NoOfBsn))
+                    {<b>@tempList1[0].Gallery_Name</b>}
+                    else
+                    {<b>@tempList1[1].Gallery_Name</b>} is more suited to pick for Targetting <b>Business</b> centers.
+                </h4>
+            </p>
+           
+        }
+    </div>
+
+</div>
 

@@ -48,7 +48,14 @@
         min-width: 200%;
     }
 
-   
+   .forthBanner {
+    position: absolute;
+    top: 100vh;
+    margin-top: 0rem;
+    left: -5rem;
+    right: -5rem;
+    z-index: -1;    
+}
 </style>
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
@@ -103,7 +110,12 @@
     </div>
     <div class="desc">
         <!-- INSERT DATA HERE -->
-        <p>@Model.Description</p>
+        <p><b>@Model.Gallery_Type Gallery </b><br/>
+        <b> Suitable Art:</b> @if(@Model.Painting == "Y"){ <span>Painting</span>} 
+                          @if(@Model.Performance == "Y"){<span>Performance</span>}
+                          @if(@Model.Installation == "Y"){<span>Installation</span>}
+                          @if(@Model.Sculpture == "Y"){<span>Sculpture</span>}
+                          @if(@Model.Photography == "Y"){<span>Photography</span>}</p>
     </div>
     <div class="link">
         <button type="button" onclick="window.location.href='@Model.Website'">VISIT WEBSITE</button>
@@ -285,6 +297,32 @@
 
     <!--<div class="thirdBanner"><img src="deco2.png" alt="" style="height: 200px; width: 100%;"></div> -->
     <div class="thirdBanner"></div>
+</div>
+<div id="thirdSection" style=" position: relative;
+    top: 200vh;
+    margin: 5rem;"class="container">
+        
+    <div class="dummy2">
+        <h1>What is near this gallery within a</h1>
+        <h4 style=" font-family: "Roboto Lt", sans-serif;
+            font-size: 4rem;
+            text-align: center;
+            letter-spacing: 0px;
+            text-decoration-line: overline;">500m</h4>
+        <h1>radius?</h1>
+    </div>
+
+    <!-- INSERT AMENITY ICONS HERE-->
+    <div class="icons"></div>
+
+    <!-- INSERT AMENITY CHART HERE-->
+    <canvas id="radarChart" style=" position: absolute;
+    left: 200px;
+    top: 200px;" height="400" width="800"></canvas>
+    <script src="~/Content/radarChart.js"></script>
+        
+    <div class="forthBanner"><img src="~/Content/images/deco2.png" alt="" style="height: 200px; width: 100%;"></div>
+
 </div>
 <!-- FORTH SECTION STARTS HERE-->
 <!--Map Section-->
