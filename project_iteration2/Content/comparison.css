@@ -1,22 +1,24 @@
 html, body{
-    margin: 0;
     padding: 0;
-    width: 100%;
+    width: 100vw;
     font-weight: 100;
     font-family: "Roboto Lt", sans-serif !important;
-    overflow-x: hidden;
+    margin-left: auto;
+    margin-right: auto;
+   
 }
 
 /* SECTION 1 STYLING STARTS HERE */
 
 .section1 {
     position: absolute;
-    width: 100%;
-    margin: 0;
+    width: 100vw;
+    max-width: 100%;
+    margin-left: -4%;
 }
 
 .split{
-    width: 100%;
+    width: 100vw;
     margin: 0;
     padding: 0;
 }
@@ -25,7 +27,7 @@ html, body{
     top: 0;
     position: absolute;
     height: 100%;
-    width: 50%;
+    width: 50vw;
 }
 
 .left{
@@ -46,7 +48,7 @@ html, body{
     }
 
     100% {
-          width: 64%;
+          width: 50%;
     }
 }
 
@@ -219,7 +221,7 @@ html, body{
 .section2 {
     position: absolute;
     top: 100vh;
-    margin: 0;
+    margin-left: -4%;
     width: 100%;
     /*background-color: rgb(195, 216, 224);
     height: 100vh;*/
@@ -249,9 +251,9 @@ html, body{
 
 #radarChart {
     position: relative;
-    top:100px;
+    top: 100px;
     left: 40%;
-    
+    margin-left: -4%;
 }
 
 

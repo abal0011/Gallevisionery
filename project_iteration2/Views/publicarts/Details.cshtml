@@ -12,7 +12,6 @@
     }
     #lineChart {
     position: absolute;
-    left: 300px;
     top: 120px;
 }
 
@@ -57,7 +56,7 @@
     z-index: -1;    
 }
 </style>
-<div class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar navbar-inverse navbar-fixed-top" style="width:100vw; ">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -72,7 +71,10 @@
                 <li>
                     @Html.ActionLink("BACK ", "Index", "publicarts")
                 </li>
-                </ul>
+                <li>
+                    @Html.ActionLink("COMPARE-GALLERIES", "compare", "publicarts")
+                </li>
+            </ul>
 
         </div>
     </div>
@@ -140,93 +142,98 @@
                           @if(@Model.Performance == "Y"){<span>Performance</span>}
                           @if(@Model.Installation == "Y"){<span>Installation</span>}
                           @if(@Model.Sculpture == "Y"){<span>Sculpture</span>}
-                          @if(@Model.Photography == "Y"){<span>Photography</span>}</p>
+                          @if(@Model.Photography == "Y"){<span>Photography</span>}
+            @if(@Model.Visual == "Y"){<span> Visual Art</span>}</p>
     </div>
     <div class="link">
         <button type="button" onclick="window.location.href='@Model.Website'">VISIT WEBSITE</button>
     </div>
-    <H4>Ameneties</H4>
-    @* Toilet data *@
-    @if (temp == "Y" && toilets >= 2)
-    {
-        <i class="material-icons" title="Accessible Toilets nearby: @Model.Toilet_" style="font-size:36px; color:red;">accessible</i>
-    }
-    else if (temp == "Y")
-    {
-        <i class="material-icons" title="Accessible Toilets nearby: @Model.Toilet_ " style="font-size:36px;">accessible</i>
-    }
-    @*Cafe and Restaurant data*@
-    @if (NoOfCf >= 23)
-    {
-        <i class="material-icons" title="No of Restaurants & Cafes: @Model.NoOFCF" style="font-size:36px; color:red;">restaurant</i>
-    }
-    else if (NoOfCf > 0 && NoOfCf < 23)
-    {
-        <i class="material-icons" title="No of Restaurants $ Cafes: @Model.NoOFCF" style="font-size:36px;">restaurant</i>
-    }
-    @*business data*@
-    @if (NoOfBsn >= 170)
-    {
-        <i class="material-icons" title="No of Business Nearby: @Model.NoOfBsn" style="font-size:36px; color:red;">work</i>
-    }
-    else if (NoOfBsn > 0 && NoOfBsn < 170)
-    {
-        <i class="material-icons" title="No of Business Nearby: @Model.NoOfBsn" style="font-size:36px;">work</i>
-    }
-    @* Arts Around *@
-    @if (NoOfArt >= 22)
-    {
-        <i class="material-icons" title="No of Public arts Nearby: @Model.NoOfArt" style="font-size:36px; color:red;">wallpaper</i>
+    <div class="amenitiesID">
+        <H4>Amenities</H4>
+        @* Toilet data *@
+        @if (temp == "Y" && toilets >= 2)
+        {
+            <i class="material-icons" title="Accessible Toilets nearby: @Model.Toilet_" style="font-size:36px; ">accessible</i>
+        }
+        else if (temp == "Y")
+        {
+            <i class="material-icons" title="Accessible Toilets nearby: @Model.Toilet_ " style="font-size:36px; color:grey;">accessible</i>
+        }
+        @*Cafe and Restaurant data*@
+        @if (NoOfCf >= 23)
+        {
+            <i class="material-icons" title="No of Restaurants & Cafes: @Model.NoOFCF" style="font-size:36px; ">restaurant</i>
+        }
+        else if (NoOfCf > 0 && NoOfCf < 23)
+        {
+            <i class="material-icons" title="No of Restaurants & Cafes: @Model.NoOFCF" style="font-size:36px; color:grey;">restaurant</i>
+        }
+        @*business data*@
+        @if (NoOfBsn >= 170)
+        {
+            <i class="material-icons" title="No of Business Nearby: @Model.NoOfBsn" style="font-size:36px; ">work</i>
+        }
+        else if (NoOfBsn > 0 && NoOfBsn < 170)
+        {
+            <i class="material-icons" title="No of Business Nearby: @Model.NoOfBsn" style="font-size:36px; color:grey;">work</i>
+        }
+        @* Arts Around *@
+        @if (NoOfArt >= 22)
+        {
+            <i class="material-icons" title="No of Public arts Nearby: @Model.NoOfArt" style="font-size:36px; ">wallpaper</i>
 
-    }
-    else if (NoOfArt > 0 && NoOfArt < 22)
-    {
-        <i class="material-icons" title="No of Public arts Nearby: @Model.NoOfArt" style="font-size:36px; ">wallpaper</i>
+        }
+        else if (NoOfArt > 0 && NoOfArt < 22)
+        {
+            <i class="material-icons" title="No of Public arts Nearby: @Model.NoOfArt" style="font-size:36px; color:grey;">wallpaper</i>
 
-    }
+        }
+        </div>
     <br />
-    Gallery Rating by Amenities:
-    @if ((NoOfArt + NoOfBsn + NoOfCf) <= 81)
-    {
-        <i class="material-icons">star</i>
-        <i class="material-icons">star_border</i>
-        <i class="material-icons">star_border</i>
-        <i class="material-icons">star_border</i>
-        <i class="material-icons">star_border</i>
-    }
-    else if ((NoOfArt + NoOfBsn + NoOfCf) > 81 && (NoOfArt + NoOfBsn + NoOfCf) < 169)
-    {
-        <i class="material-icons">star</i>
-        <i class="material-icons">star</i>
-        <i class="material-icons">star_border</i>
-        <i class="material-icons">star_border</i>
-        <i class="material-icons">star_border</i>
-    }
-    else if ((NoOfArt + NoOfBsn + NoOfCf) > 169 && (NoOfArt + NoOfBsn + NoOfCf) < 252)
-    {
-        <i class="material-icons">star</i>
-        <i class="material-icons">star</i>
-        <i class="material-icons">star</i>
-        <i class="material-icons">star_border</i>
-        <i class="material-icons">star_border</i>
-    }
-    else if ((NoOfArt + NoOfBsn + NoOfCf) > 252 && (NoOfArt + NoOfBsn + NoOfCf) < 335)
-    {
-        <i class="material-icons">star</i>
-        <i class="material-icons">star</i>
-        <i class="material-icons">star</i>
-        <i class="material-icons">star</i>
-        <i class="material-icons">star_border</i>
-    }
-    else
-    {
-        <i class="material-icons">star</i>
-        <i class="material-icons">star</i>
-        <i class="material-icons">star</i>
-        <i class="material-icons">star</i>
-        <i class="material-icons">star</i>
-    }
-</div>
+    <div class="Ranking">
+        Gallery Rating by Amenities:
+        @if ((NoOfArt + NoOfBsn + NoOfCf) <= 81)
+        {
+            <i class="material-icons">star</i>
+            <i class="material-icons">star_border</i>
+            <i class="material-icons">star_border</i>
+            <i class="material-icons">star_border</i>
+            <i class="material-icons">star_border</i>
+        }
+        else if ((NoOfArt + NoOfBsn + NoOfCf) > 81 && (NoOfArt + NoOfBsn + NoOfCf) < 169)
+        {
+            <i class="material-icons">star</i>
+            <i class="material-icons">star</i>
+            <i class="material-icons">star_border</i>
+            <i class="material-icons">star_border</i>
+            <i class="material-icons">star_border</i>
+        }
+        else if ((NoOfArt + NoOfBsn + NoOfCf) > 169 && (NoOfArt + NoOfBsn + NoOfCf) < 252)
+        {
+            <i class="material-icons">star</i>
+            <i class="material-icons">star</i>
+            <i class="material-icons">star</i>
+            <i class="material-icons">star_border</i>
+            <i class="material-icons">star_border</i>
+        }
+        else if ((NoOfArt + NoOfBsn + NoOfCf) > 252 && (NoOfArt + NoOfBsn + NoOfCf) < 335)
+        {
+            <i class="material-icons">star</i>
+            <i class="material-icons">star</i>
+            <i class="material-icons">star</i>
+            <i class="material-icons">star</i>
+            <i class="material-icons">star_border</i>
+        }
+        else
+        {
+            <i class="material-icons">star</i>
+            <i class="material-icons">star</i>
+            <i class="material-icons">star</i>
+            <i class="material-icons">star</i>
+            <i class="material-icons">star</i>
+        }
+    </div>
+    </div>
 <div class="img">
     <img class="top" src="~/Content/picture/@Model.Id/image1.jpg"/>
    
@@ -290,17 +297,29 @@
         y: 40,
         ease: Expo.easeInOut
     }, 0.2);
+    TweenMax.from(".amenitiesID", 1.6, {
+        delay: 6.8,
+        opacity: 0,
+        y: 30,
+        ease: Expo.easeInOut
+    });
+    TweenMax.from(".Ranking", 1.6, {
+        delay: 6.8,
+        opacity: 0,
+        y: 30,
+        ease: Expo.easeInOut
+    });
 
 </script>
 <div id="secondSection" class="container">
   
     <div class="backColor"></div>
-    <h1>How many <span style="font-size: 3rem; color: black; text-shadow: 6px 12px #c5c5c5;">people </span>walk past this gallery every day?</h1>
-    <h3>More people walking past on the days this gallery is open, the better for your business!</h3>
-
+    <h1 style="font-size: 26px;">/ This many people <br>
+        / are walking past</h1>
+    <h3 style="font-size: 16px;">More people walking past on the days this gallery is open, the better for your business!</h3>
     <!-- INSERT OPENING HOURS-->
-    <div class="hours">
-        <button type="button">Opening Hours</button>
+    <div class="hours" >
+        <h1> Opening Hours </h1>
         <ul>
             <li>Mon: @Model.Monday </li>
             <li>Tue: @Model.Tuesday </li>
@@ -313,7 +332,7 @@
         </ul>
     </div>
     <!-- INSERT PEDESTRIAN CHART HERE-->
-    <canvas id="lineChart" height="400" width="800"></canvas>
+    <canvas id="lineChart" height="400" width="600"></canvas>
     
 
     <!--<div class="thirdBanner"><img src="deco2.png" alt="" style="height: 200px; width: 100%;"></div> -->
@@ -342,7 +361,7 @@
     top: 200px;" height="400" width="800"></canvas>
     
         
-    <div class="forthBanner"><img src="~/Content/images/deco2.png" alt="" style="height: 200px; width: 100%;"></div>
+    <div class="forthBanner"><img src="~/Content/images/deco2.png" alt="" style="height: auto; width: 100vw;"></div>
 
 </div>
 <!-- FORTH SECTION STARTS HERE-->
@@ -350,7 +369,7 @@
 <div id="forthSection" class="container">
     <div class="dummy3">
         <h1>How to get around if you are at this gallery?</h1>
-        <h3>If you are after cafes, restaurants, bars, officeworks and anything else.</h3>
+        <h3 style="font-size:16px;">If you are after cafes, restaurants, bars, officeworks and anything else.</h3>
 
         <!-- INSERT THE MAP HERE-->
         <div class="map">
@@ -443,9 +462,11 @@
             datasets: [
                 {
                     label: 'Rating of this gallery out of 5',
-                    backgroundColor: "rgba(75,192,92,0.4)",
-                    borderColor: "rgba(75,192,192,1)",
-                    borderWidth: 2,
+                    backgroundColor: "rgba(220,226,234,0.8)",
+                    borderColor: "rgba(195,205,219,1)",
+                    borderWidth: 3,
+                    pointHoverBorderWidth: 8,
+                    pointHoverBackgroundColor: "rgba(255,255,255,0)",
                     data: [entertainment,traffic1,transportData1,accessible]
                 }
             ]
@@ -453,6 +474,40 @@
         options: {
             responsive: false,
             maintainAspectRatio: this.maintainAspectRatio,
+            title: {
+                display: true,
+                text: "Location evaluation ratings",
+                fontSize: 16
+            },
+            label: {
+                fontColor: "rgba(75,192,192,1)",
+            },
+            legend: {
+                position: 'bottom',
+                onClick: false,
+                labels: {
+                    padding: 20,
+                }
+            },
+            scale: {
+                ticks: {
+                    beginAtZero: true,
+                    max: 5,
+                    maxTicksLimit: 5,
+                    display: true,
+                    backdropColor: 'transparent',
+                },
+                gridLines: {
+                    circular: true, /* THIS DOES NOT WORK FML........ */
+                    lineWidth: 0.6,
+                },
+                labels: {
+                    padding: 20,
+                },
+                pointLabels :{
+                    fontSize: 12,
+                }
+            }
         }
     });
 
@@ -488,63 +543,63 @@
             labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "sun"],
             datasets: [
                 {
-                    label: "Pedestrian Count During last few weeks",
+                    label: "Historical Records",
                     fill: false,
-                    lineTension: 0.06,
-                    backgroundColor: "rgba(75,192,92,0.4)",
-                    borderColor: "rgba(75,192,192,1)",
+                    lineTension: 0.4,
+                    backgroundColor: "rgb(82,105,136,0.8)",
+                    borderColor: "rgb(82,105,136)",
                     borderCapStyle: "butt",
                     borderDash: [],
                     borderDashOffset: 0.0,
                     boderJoinStyle: 'miter',
-                    pointBorderColor: "rgba(75,192,192,1)",
+                    pointBorderColor: 'white',
                     pointBackgroundColor: "#fff",
-                    pointBorderWidth: 1,
-                    pointHoverRadius: 5,
-                    pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                    pointBorderWidth: 2,
+                    pointHoverRadius: 10,
+                    pointHoverBackgroundColor: "rgb(82,105,136,0.8)",
                     pointHoverBorderColor: "rgba(220,220,220,1)",
-                    pointHoverBorderWidth: 2,
+                    pointHoverBorderWidth: 8,
                     pointRadius: 1,
                     pointHitRadius: 10,
                     data: [monPed1, tuesPed1, wedPed1, thursPed1, friPed1, satPed1, sunPed1]
                 }, {
-                    label: "Pedestrian Count in next 1 week",
+                    label: "Pedestrian Count Prediction For Next Week",
                     fill: false,
-                    lineTension: 0.06,
-                    backgroundColor: "rgba(75,192,92,0.4)",
-                    borderColor: "rgba(75,192,192,1)",
+                    lineTension: 0.4,
+                    backgroundColor: "rgb(220,226,234)",
+                    borderColor: "rgb(82,105,136,0.3)",
                     borderCapStyle: "butt",
                     borderDash: [],
                     borderDashOffset: 0.0,
                     boderJoinStyle: 'miter',
-                    pointBorderColor: "rgba(75,192,192,1)",
+                    pointBorderColor: 'white',
                     pointBackgroundColor: "#fff",
-                    pointBorderWidth: 1,
-                    pointHoverRadius: 5,
-                    pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                    pointBorderWidth: 2,
+                    pointHoverRadius: 10,
+                    pointHoverBackgroundColor: "rgb(220,226,234)",
                     pointHoverBorderColor: "rgba(220,220,220,1)",
-                    pointHoverBorderWidth: 2,
+                    pointHoverBorderWidth: 8,
                     pointRadius: 1,
                     pointHitRadius: 10,
                     data: [monPed2, tuesPed2, wedPed2, thursPed2, friPed2, satPed2, sunPed2]
                 },
                 {
-                    label: "Pedestrian Count in next 4 Weeks",
+                    label: "Pedestrian Count Prediction For Next Month",
                     fill: false,
-                    lineTension: 0.06,
-                    backgroundColor: "rgba(75,192,92,0.4)",
-                    borderColor: "rgba(75,192,192,1)",
+                    lineTension: 0.4,
+                    backgroundColor: "rgb(194,182,208,0.5)",
+                    borderColor: "rgb(194,182,208)",
                     borderCapStyle: "butt",
                     borderDash: [],
                     borderDashOffset: 0.0,
                     boderJoinStyle: 'miter',
-                    pointBorderColor: "rgba(75,192,192,1)",
+                    pointBorderColor: 'white',
                     pointBackgroundColor: "#fff",
-                    pointBorderWidth: 1,
-                    pointHoverRadius: 5,
-                    pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                    pointBorderWidth: 2,
+                    pointHoverRadius: 10,
+                    pointHoverBackgroundColor: "rgb(194,182,208,0.5)",
                     pointHoverBorderColor: "rgba(220,220,220,1)",
-                    pointHoverBorderWidth: 2,
+                    pointHoverBorderWidth: 8,
                     pointRadius: 1,
                     pointHitRadius: 10,
                     data: [monPed3, tuesPed3, wedPed3, thursPed3, friPed3, satPed3, sunPed3]
@@ -554,6 +609,18 @@
         options: {
             responsive: false,
             maintainAspectRatio: this.maintainAspectRatio,
+            title: {
+                display: true,
+                text: "Number of pedestrian count during a week",
+                fontSize: 16,
+            },
+            legend: {
+                position: 'bottom',
+
+                labels: {
+                    padding: 20,
+                }
+            }
         }
 
     });

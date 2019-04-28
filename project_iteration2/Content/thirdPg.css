@@ -321,18 +321,29 @@ img {
 
 .hours {
     position: absolute;
-    left: 20px;
+    left: 65%;
     top: 120px;
 }
 
     .hours ul {
         position: relative;
-        top: 80px;
-        line-height: 45px;
+        top: 70px;
+        line-height: 40px;
     }
+
+    .hours h1 {
+        position: absolute;
+        font-family: "Roboto Lt", sans-serif;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: black;
+        font-size: 14px;
+        padding-left: 30px;
+    }
+
 .container h1 {
     font: lighter;
-    font-size: 1.8rem;
+    font-size: 20px;
     text-align: center;
     color: #5c5858;
     font-family: "Roboto Lt", sans-serif;
@@ -406,7 +417,7 @@ img {
     position: absolute;
     top: 100vh;
     margin-top: -5rem;
-    background-image: url("parallax1.png");
+    background-image: url("/Content/compare/parallax1.png");
     height: 100px; 
     width: 100%;
     padding: 25rem 0;

@@ -27,18 +27,18 @@
         </div>
     </div>
 </div>
-<div class="CompareField row" style="padding-top: 75px; padding-bottom: 25px;">
+<div class="CompareField row" style="padding-top: 60px; padding-bottom: 50px;">
     @using (Html.BeginForm())
     {
         <p>
-            <label class="col-sm-3"style="position: relative; left:15%;">
+            <label class="col-sm-3"style="position: absolute; left:5%;">
                 @Html.DropDownList("option1", "All")
             </label>
-            <label class="col-sm-3"style="position: relative; left:15%;">
+            <label class="col-sm-3"style="position: absolute; left:30%;">
             @Html.DropDownList("option2", "All")
             </label>
 
-            <input class="col-sm-4 btn btn-dark" type="submit" value="COMPARE" style="position: relative; left:20%;" />
+            <input class="col-sm-4 btn btn-dark" type="submit" value="COMPARE" style="position: absolute; right:5%;  " />
         </p>
     }
 </div>
@@ -89,8 +89,8 @@
    
     @if (Model.Count() == 2)
     {   <div class="row">
-        <div class="pic1 col-sm-6"><img class="col-sm-6" src="~/Content/picture/@tempList1[0].Id/image1.jpg" alt=""></div>
-        <div class="pic2 col-sm-6"><img class="col-sm-6"src="~/Content/picture/@tempList1[1].Id/image1.jpg" alt=""></div>
+        <div class="pic1 col-md-6"><img class="col-sm-6" src="~/Content/picture/@tempList1[0].Id/image1.jpg" alt=""></div>
+        <div class="pic2 col-md-6"><img class="col-sm-6"src="~/Content/picture/@tempList1[1].Id/image1.jpg" alt=""></div>
             
         </div>}
         <div class="row">
@@ -201,7 +201,7 @@
     </div>
 
     <!-- INSERT AMENITY CHART HERE -->
-    <canvas class="col-sm-4" id="radarChart" height="300" width="300"></canvas>
+    <canvas class="col-sm-4" id="radarChart" height="400" width="400"></canvas>
     <script>
         // for first gallery
         var NoOfCF1 = @NoOfCF1;
@@ -367,7 +367,40 @@
             },
 
             // Configuration options go here
-            options: {responsive:false}
+            options: {
+                responsive:false,
+                scale: {
+                    ticks: {
+                        beginAtZero: true,
+                        max: 5,
+                        maxTicksLimit: 5,
+                        display: true,
+                        backdropColor: 'transparent',
+                    },
+                    gridLines: {
+                        circular: true, /* THIS DOES NOT WORK FML........ */
+                        lineWidth: 0.6,
+                    },
+                    labels: {
+                        padding: 20,
+                    },
+                    pointLabels :{
+                        fontSize: 12,
+                    },
+                    legend: {
+                        position: 'bottom',
+                        onClick: false,
+                        labels: {
+                            padding: 20,
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: "Location evaluation ratings",
+                        fontSize: 16
+                    }
+                }
+            }
         });
     </script>
 
@@ -376,72 +409,85 @@
         @if (Model.Count() == 2)
         {
             <p>
+                <h4 style="text-align: center;">
                 <span><i class="material-icons">accessible</i></span>
-                <span>@tempList1[0].Gallery_Name </span> <!-- INSERT THE GALLERY WITH HIGHER RATING OF ACCESSIBILITY HERE -->
+                <span><b>@tempList1[0].Gallery_Name </b></span> <!-- INSERT THE GALLERY WITH HIGHER RATING OF ACCESSIBILITY HERE -->
                 has
                 <span><b> @tempList1[0].Toilet_ </b></span>
                 accessible/unisex toilets and
-                <span> @tempList1[1].Gallery_Name </span>
+                <span> <b>@tempList1[1].Gallery_Name </b></span>
                 has <span><b>@tempList1[1].Toilet_</b></span>
                 accessible/unisex toilets.
-            
+                </h4>
                 <br/>
                 <br/>
-                <span><i class="material-icons">free_breakfast</i></span>
-                <span>@tempList1[0].Gallery_Name </span> <!-- INSERT THE GALLERY WITH HIGHER RATING OF ACCESSIBILITY HERE -->
-                has
-                <span><b> @tempList1[0].NoOFCF </b></span>
-                number of cafes nearby and
-                <span> @tempList1[1].Gallery_Name </span>
-                has <span><b>@tempList1[1].NoOFCF</b></span>
+                <h4 style="text-align: center;">
+                    <span><i class="material-icons">free_breakfast</i></span>
+                    <span><b>@tempList1[0].Gallery_Name </b></span> <!-- INSERT THE GALLERY WITH HIGHER RATING OF ACCESSIBILITY HERE -->
+                    has
+                    <span><b> @tempList1[0].NoOFCF </b></span>
+                    number of cafes nearby and
+                    <span><b> @tempList1[1].Gallery_Name </b></span>
+                    has <span><b>@tempList1[1].NoOFCF</b></span>
+                </h4>
                 <br/>
                 <br/>
-                <span><i class="material-icons">collections</i></span>
-                <span>@tempList1[0].Gallery_Name </span> <!-- INSERT THE GALLERY WITH HIGHER RATING OF ACCESSIBILITY HERE -->
-                has
-                <span><b> @tempList1[0].NoOfArt </b></span>
-                public artworks around the Gallery
-                <span> @tempList1[1].Gallery_Name </span>
-                has <span><b>@tempList1[1].NoOfArt</b></span>
-                <br/>    
-                <br/>
-                <span><i class="material-icons">business_center</i></span>
-                <span>@tempList1[0].Gallery_Name </span> <!-- INSERT THE GALLERY WITH HIGHER RATING OF ACCESSIBILITY HERE -->
-                has
-                <span><b> @tempList1[0].NoOfBsn </b></span>
-                office blocks nearby
-                <span> @tempList1[1].Gallery_Name </span>
-                has <span><b>@tempList1[1].NoOfBsn</b></span>  
+                <h4 style="text-align: center;">
+                    <span><i class="material-icons">collections</i></span>
+                    <span><b>@tempList1[0].Gallery_Name </b></span> <!-- INSERT THE GALLERY WITH HIGHER RATING OF ACCESSIBILITY HERE -->
+                    has
+                    <span><b> @tempList1[0].NoOfArt </b></span>
+                    public artworks around the Gallery
+                    <span><b> @tempList1[1].Gallery_Name </b></span>
+                    has <span><b>@tempList1[1].NoOfArt</b></span>
+                </h4>
                 <br/>
                 <br/>
-                <h4 style="text-align: center;"><b> /  C O N C L U S I O N </b></h4>
+
+                <h4 style="text-align: center;">
+                    <span><i class="material-icons">business_center</i></span>
+
+                    <span><b>@tempList1[0].Gallery_Name </b> </span> <!-- INSERT THE GALLERY WITH HIGHER RATING OF ACCESSIBILITY HERE -->
+                    has
+                    <span><b> @tempList1[0].NoOfBsn </b></span>
+                    office blocks nearby
+                    <span><b> @tempList1[1].Gallery_Name </b></span>
+                    has <span><b>@tempList1[1].NoOfBsn</b></span>
+                </h4>
+                <br/>
+                <br/>
+                <h4 style="text-align: center;"><b> / C O N C L U S I O N </b></h4>
                 <br/>
                 <h4 style="text-align: center;">
                     @if (Convert.ToDouble(@tempList1[0].Toilet_) > Convert.ToDouble(@tempList1[1].Toilet_))
                     {<b>@tempList1[0].Gallery_Name</b>}
                     else
-                    {<b>@tempList1[1].Gallery_Name</b>} is more suited for <b>Accesible/Unisex Toilet</b> needs.
+                    {<b>@tempList1[1].Gallery_Name</b>}
+                    is more suited for <b>Accesible/Unisex Toilet</b> needs.
                 </h4>
                 <br/>
                 <h4 style="text-align: center;">
                     @if (Convert.ToDouble(@tempList1[0].NoOFCF) > Convert.ToDouble(@tempList1[1].NoOFCF))
                     {<b>@tempList1[0].Gallery_Name</b>}
                     else
-                    {<b>@tempList1[1].Gallery_Name</b>} is more suited to pick for <b>Social</b> area.
+                    {<b>@tempList1[1].Gallery_Name</b>}
+                    is more suited to pick for <b>Social</b> area.
                 </h4>
                 <br/>
                 <h4 style="text-align: center;">
                     @if (Convert.ToDouble(@tempList1[0].NoOfArt) > Convert.ToDouble(@tempList1[1].NoOfArt))
                     {<b>@tempList1[0].Gallery_Name</b>}
                     else
-                    {<b>@tempList1[1].Gallery_Name</b>} is more suited to pick for <b>Tourist Artsy</b> area.
+                    {<b>@tempList1[1].Gallery_Name</b>}
+                    is more suited to pick for <b>Tourist Artsy</b> area.
                 </h4>
                 <br/>
                 <h4 style="text-align: center;">
                     @if (Convert.ToDouble(@tempList1[0].NoOfBsn) > Convert.ToDouble(@tempList1[1].NoOfBsn))
                     {<b>@tempList1[0].Gallery_Name</b>}
                     else
-                    {<b>@tempList1[1].Gallery_Name</b>} is more suited to pick for Targetting <b>Business</b> centers.
+                    {<b>@tempList1[1].Gallery_Name</b>}
+                    is more suited to pick for Targetting <b>Business</b> centers.
                 </h4>
             </p>
            

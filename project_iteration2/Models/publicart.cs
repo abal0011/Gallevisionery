@@ -61,8 +61,7 @@ namespace project_iteration2.Models
 
         public string Gallery_Type { get; set; }
 
-        public string Description { get; set; }
-
+        
         public string Website { get; set; }
 
         public string Street { get; set; }

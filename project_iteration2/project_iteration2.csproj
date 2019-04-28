@@ -149,6 +149,7 @@
       <DependentUpon>Database1.mdf</DependentUpon>
     </Content>
     <Content Include="Content\1.png" />
+    <Content Include="Content\bannerNew.jpg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -156,6 +157,7 @@
     <Content Include="Content\compare\1.png" />
     <Content Include="Content\compare\2.png" />
     <Content Include="Content\compare\logo.png" />
+    <Content Include="Content\compare\parallax1.png" />
     <Content Include="Content\compare\parallax2.png" />
     <Content Include="Content\compare\parallax3.png" />
     <Content Include="Content\compare\radarChart.js" />
@@ -260,6 +262,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\bootstrap-toggle.less" />
+    <None Include="Properties\PublishProfiles\gallevisioneryIteration2 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

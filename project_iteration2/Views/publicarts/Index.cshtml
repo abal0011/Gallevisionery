@@ -1,4 +1,4 @@
-﻿@model PagedList.IPagedList<project_iteration2.Models.publicart>
+﻿@model IEnumerable<project_iteration2.Models.publicart>
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
@@ -178,7 +178,7 @@
 </div>
 <div class="row">
     <div class="col-md-12">
-        <img style="width:100%; height: 300px; margin-top:40px  ;" src="~/Content/images/banner1.png" />
+        <img style="width:100%; height: 300px; margin-top:40px  ;" src="~/Content/bannerNew.jpg" />
 
     </div>
 </div>
@@ -188,7 +188,7 @@
     @using (Html.BeginForm("Index","publicarts", FormMethod.Get))
     {<div class="md-form">
          <p>
-                
+                 Search By Name : 
                  @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
                  
            
@@ -197,37 +197,57 @@
 
                  Type dropdown: @Html.DropDownList("GallType", null, "Gallery Type", new { @class = "btn dropdown-toggle" })
 
-                 <label class="btn btn-light" style="position: relative; ">
-                     Accesible Toilets: @Html.CheckBox("toilet", false, new { @class = "custom-control-input" })
-                 </label>
-                 <input type="submit" value="Search" class="btn" style="position:static; float: right;" />
+             <label class="btn btn-light" style="position: relative; padding:10px; margin:5px;">
+                 @Html.CheckBox("toilet", false, new { @class = "custom-control-input" } ) <b>Accesible Toilets</b>
+             </label>
+             
+                 <input type="submit" value="Search" class="btn btn-dark" style="position:static; float: right; margin-top:20px; margin-right:5%;" />
+             
+             <br />
                  <br />
-                 <br />
-                 <a href="javascript:unhide('hideDiv');">Show more</a>
+                 <a href="javascript:unhide('hideDiv');">TYPE OF ART</a>
                  <div id="hideDiv" class="hidden" style="position:static;">
                      <div class="form-group">
 
                          <div class="btn-group">
-                             <label class="btn btn-light" style="position: relative; left:10%;">
-                                 @Html.CheckBox("painting", false) <b>painting</b>
-                             </label>
-                             <label class="btn btn-light" style="position: relative; left:15%;">
-                                 @Html.CheckBox("sculpture", false) <b>Sculpture</b>
-                             </label>
-                             <label class="btn btn-light" style="position: relative; left:20%;">
-                                 @Html.CheckBox("perf", false)<b>
-                                     Performing Arts
-                                 </b>
-                             </label>
-                             <label class="btn btn-light" style="position: relative; left:25%;">
-                                 @Html.CheckBox("photography", false) <b>Photography</b>
-                             </label>
-                             <label class="btn btn-light" style="position: relative; left:30%;">
-                                 @Html.CheckBox("install", false) <b>Installation</b>
-                             </label>
-                             <label class="btn btn-light" style="position: relative; left:35%;">
-                                 @Html.CheckBox("visual", false) <b>Visual Arts</b>
-                             </label>
+                             <div class="row">
+                                 <div class="col-sm-3" style="padding:10px; width: auto; left:40%">
+                                     <label class="btn btn-light" style="position: static; left:40%;">
+                                         @Html.CheckBox("painting", false) <b>painting</b>
+                                     </label>
+                                 </div>
+                                 <div class="col-sm-3" style="padding:10px; width: auto; left:50%;">
+                                     <label class="btn btn-light" style="position: static; left:50%;">
+                                         @Html.CheckBox("sculpture", false) <b>Sculpture</b>
+                                     </label>
+                                 </div>
+                                 <div class="col-sm-3" style="padding:10px; width: auto; left: 60%;">
+                                     <label class="btn btn-light" style="position: static; left:60%;">
+                                         @Html.CheckBox("perf", false)<b>
+                                             Performing Arts
+                                         </b>
+                                     </label>
+                                 </div>
+                             
+
+                                 <div class="col-sm-3" style="padding:10px; width: auto; left:70%;">
+                                     <label class="btn btn-light " style="position: static; left:70%;">
+                                         @Html.CheckBox("photography", false) <b>Photography</b>
+                                     </label>
+                                 </div>
+                             </div>
+                             <div class="row">
+                                 <div class="col-sm-6" style="padding:10px; width: auto; left:70%;">
+                                     <label class="btn btn-light" style="position: static; left:70%;">
+                                         @Html.CheckBox("install", false) <b>Installation</b>
+                                     </label>
+                                 </div>
+                                 <div class="col-sm-6" style="padding:10px; width: auto; left:80%;">
+                                     <label class="btn btn-light" style="position: static; left:80%;">
+                                         @Html.CheckBox("visual", false) <b>Visual Arts</b>
+                                     </label>
+                                 </div>
+                             </div>
                          </div>
 
                      </div>
@@ -246,13 +266,12 @@
 
 {
     <div class="col-md-4">
-        <div class="card" style="width: 30rem;">
-            <img class="card-img-top" src="~/Content/picture/@item.Id/image1.jpg" style="width: 100%; height:150px;">
+        <div class="card" style="margin: 20px; width: 30rem; height: 250px;">
+            <img class="card-img-top" src="~/Content/picture/@item.Id/image1.jpg" style="width: 100%; height: 150px;">
             <div class="card-body">
-                <h4 class="card-subtitle"> <b> @Html.DisplayFor(modelItem => item.Gallery_Name , new{ sortOrder = ViewBag.NameSortParm })</b></h4>
+                <h4 class="card-subtitle" style="padding-left: 20px; padding-top: 10px;"> <b> @Html.DisplayFor(modelItem => item.Gallery_Name , new{ sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })</b></h4>
 
-                <div>
-                    
+                <div style=" position: absolute; padding-bottom: 10px; padding-left:20px; margin:0;">
                     @Html.ActionLink("Details", "Details", "publicarts", new {id = item.Id}, new {@class = "btn btn-dark "})
                 </div>
             </div>
@@ -260,10 +279,7 @@
     </div>
 }
     <br/>
-    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-
-    @Html.PagedListPager(Model, page => Url.Action("Index", 
-        new { page, currentFilter = ViewBag.CurrentFilter }))
+ 
 
 <script>
     function unhide(divID) {
