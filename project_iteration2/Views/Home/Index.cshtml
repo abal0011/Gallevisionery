@@ -74,3 +74,30 @@
         </div>
     </div>
 </body>
+
+<script>
+    function password()
+    {
+        var i=1;
+        var passwd=prompt('Please enter password: ','');
+        while(i<3)
+        {
+            if(passwd=="Monash")
+            {
+                alert('Welcome!');
+                /* INSERT THE LANDING PAGE'S PATH & NAME IN YOUR END */
+                
+                break;
+            }
+            i++;
+            var passwd=prompt('Invalid Password! Try again! \n You can enter '+(100-i)+' more time');
+        }
+        if(password!="Monash"&&i==3)
+        {
+            alert('Login Failed');
+            history.go(-1)
+        }
+        return "";
+    }
+    password();
+</script>
