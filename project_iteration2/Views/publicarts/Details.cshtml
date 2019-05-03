@@ -61,6 +61,50 @@
         right: -5rem;
         z-index: -1;
     }
+    /*Trial of image slider*/
+    * {box-sizing: border-box;}
+
+.img-comp-container {
+  position: relative;
+  margin-left:53.5%;
+  margin-top:15%;
+  height: 250px; /*should be the same height as the images*/
+}
+
+.img-comp-img {
+  position: absolute;
+  width: auto;
+  height: auto;
+  overflow: hidden;
+}
+
+.img-comp-img img {
+  display: block;
+  vertical-align: middle;
+}
+
+.img-comp-slider {
+  position: absolute;
+  z-index: 9;
+  cursor: ew-resize;
+  /*set the appearance of the slider:*/
+  width: 40px;
+  height: 40px;
+  background-color: #2196F3;
+  opacity: 0.7;
+  border-radius: 50%;
+}
+#mapIcon:hover {
+    transform: scale(1.5);
+      fill:gold;
+    background:gold;
+    transition: background 0.5s, transform 0.5s ease-out, fill 0.5s;
+}
+#toTop:hover {
+    transform: scale(1.5);
+      
+    transition: background 0.5s, transform 0.5s ease-out, fill 0.5s;
+}
 </style>
 <div class="navbar navbar-inverse navbar-fixed-top" style="width:100vw; ">
     <div class="container-fluid">
@@ -176,46 +220,48 @@
     <div class="amenitiesID">
         <H4>
             <b>Amenities</b>
-            <a target="_blank" href="#" title="Hi, Each Gallery can have amenities from Restaurants, Cafes, Office Blocks and Unisex/Accessible Toilets in and around it.">
+            <a target="_blank" href="#" title="Hi, Each Gallery can have amenities from
+               Restaurants,Cafes, Office Blocks and 
+               Unisex/Accessible Toilets in and around it.">
                 <img src="https://www.clipartmax.com/png/small/216-2165034_openoffice-blue-question-mark-png.png" height="13px" style="margin-bottom: 7px;">
             </a>
         </H4>
         @* Toilet data *@
         @if (temp == "Y" && toilets >= 2)
         {
-            <i class="material-icons" title="Accessible Toilets nearby: @Model.Toilet_" style="font-size:36px; ">accessible</i>
+            <i class="material-icons" title="Accessible Toilets nearby: @Model.Toilet_" style="font-size:36px; margin-left:5%; ">accessible</i>
         }
         else if (temp == "Y")
         {
-            <i class="material-icons" title="Accessible Toilets nearby: @Model.Toilet_ " style="font-size:36px; color:grey;">accessible</i>
+            <i class="material-icons" title="Accessible Toilets nearby: @Model.Toilet_ " style="font-size:36px; color:grey;margin-left:5%;">accessible</i>
         }
         @*Cafe and Restaurant data*@
         @if (NoOfCf >= 23)
         {
-            <i class="material-icons" title="No of Restaurants & Cafes: @Model.NoOFCF" style="font-size:36px; ">restaurant</i>
+            <i class="material-icons" title="No of Restaurants & Cafes: @Model.NoOFCF" style="font-size:36px;margin-left:5%; ">restaurant</i>
         }
         else if (NoOfCf > 0 && NoOfCf < 23)
         {
-            <i class="material-icons" title="No of Restaurants & Cafes: @Model.NoOFCF" style="font-size:36px; color:grey;">restaurant</i>
+            <i class="material-icons" title="No of Restaurants & Cafes: @Model.NoOFCF" style="font-size:36px; color:grey;margin-left:5%;">restaurant</i>
         }
         @*business data*@
         @if (NoOfBsn >= 170)
         {
-            <i class="material-icons" title="No of Business Nearby: @Model.NoOfBsn" style="font-size:36px; ">work</i>
+            <i class="material-icons" title="No of Business Nearby: @Model.NoOfBsn" style="font-size:36px; margin-left:5%;">work</i>
         }
         else if (NoOfBsn > 0 && NoOfBsn < 170)
         {
-            <i class="material-icons" title="No of Business Nearby: @Model.NoOfBsn" style="font-size:36px; color:grey;">work</i>
+            <i class="material-icons" title="No of Business Nearby: @Model.NoOfBsn" style="font-size:36px; color:grey; margin-left:5%;">work</i>
         }
         @* Arts Around *@
         @if (NoOfArt >= 22)
         {
-            <i class="material-icons" title="No of Public arts Nearby: @Model.NoOfArt" style="font-size:36px; ">wallpaper</i>
+            <i class="material-icons" title="No of Public arts Nearby: @Model.NoOfArt" style="font-size:36px; margin-left:5%;">wallpaper</i>
 
         }
         else if (NoOfArt > 0 && NoOfArt < 22)
         {
-            <i class="material-icons" title="No of Public arts Nearby: @Model.NoOfArt" style="font-size:36px; color:grey;">wallpaper</i>
+            <i class="material-icons" title="No of Public arts Nearby: @Model.NoOfArt" style="font-size:36px; color:grey;margin-left:5%;">wallpaper</i>
 
         }
     </div>
@@ -262,7 +308,8 @@
             <i class="material-icons">star</i>
             <i class="material-icons">star</i>
         }
-        <a target="_blank" href="#" title="Hi, I am ranked from 1 to 5 stars based on Number of amenities the gallery offers in and around it.">
+        <a target="_blank" href="#" title="Hi, I am ranked from 1 to 5 stars based on 
+           Number of amenities the gallery offers in and around it.">
             <img src="https://www.clipartmax.com/png/small/216-2165034_openoffice-blue-question-mark-png.png" height="13px" style="margin-bottom:15px;">
         </a>
     </div>
@@ -273,13 +320,22 @@
   display: inline-block; padding: 3px;  transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);"></i></b>
     <a href="#map">
-        <img src="~/Content/images/mapIcon.svg" style="height:25px; width:25px; margin-left:3%;"  />
+        <img id="mapIcon" src="~/Content/images/mapIcon.svg" style="height:25px; width:25px; margin-left:3%;"  />
     </a>
 </div>
-<div class="img">
+@* Image comparison Experiment *@
+<div class="img-comp-container">
+    <div class="img-comp-img">
+        <img src="~/Content/picture/@Model.Id/image1.jpg" width="400" height="250">
+    </div>
+    <div class="img-comp-img img-comp-overlay">
+        <img src="~/Content/picture/@Model.Id/image2.jpg" width="400" height="250">
+    </div>
+</div>
+@*<div class="img">
     <img class="top" src="~/Content/picture/@Model.Id/image1.jpg" />
 
-</div>
+</div>*@
 
 <div class="hours">
 
@@ -361,7 +417,7 @@
     });
 
 </script>
-<div id="secondSection" class="container-fluid" style="margin-top:0; margin-right:0;">
+<div id="secondSection" class="container-fluid" style="margin-top:-33%; margin-right:0;">
 
     <div class="backColor"></div>
     <h1 style="font-size: 26px;">
@@ -434,7 +490,7 @@
         </a>
 
     </div>
-    <a href="#first"><img style="float:right; bottom:0px; height:35px; width:35px;" src="~/Content/images/toTheTop.svg" /></a>
+    <a href="#first"><img id="toTop" style="float:right; bottom:0px; height:35px; width:35px;" src="~/Content/images/toTheTop.svg" title="To Top" /></a>
 
 </div>
 
@@ -841,5 +897,82 @@
     });
     map.addControl(new mapboxgl.NavigationControl());
 
-
+    //
+    function initComparisons() {
+  var x, i;
+  /* Find all elements with an "overlay" class: */
+  x = document.getElementsByClassName("img-comp-overlay");
+  for (i = 0; i < x.length; i++) {
+    /* Once for each "overlay" element:
+    pass the "overlay" element as a parameter when executing the compareImages function: */
+    compareImages(x[i]);
+  }
+  function compareImages(img) {
+    var slider, img, clicked = 0, w, h;
+    /* Get the width and height of the img element */
+    w = img.offsetWidth;
+    h = img.offsetHeight;
+    /* Set the width of the img element to 50%: */
+    img.style.width = (w / 2) + "px";
+    /* Create slider: */
+    slider = document.createElement("DIV");
+    slider.setAttribute("class", "img-comp-slider");
+    /* Insert slider */
+    img.parentElement.insertBefore(slider, img);
+    /* Position the slider in the middle: */
+    slider.style.top = (h / 2) - (slider.offsetHeight / 2) + "px";
+    slider.style.left = (w / 2) - (slider.offsetWidth / 2) + "px";
+    /* Execute a function when the mouse button is pressed: */
+    slider.addEventListener("mousedown", slideReady);
+    /* And another function when the mouse button is released: */
+    window.addEventListener("mouseup", slideFinish);
+    /* Or touched (for touch screens: */
+    slider.addEventListener("touchstart", slideReady);
+     /* And released (for touch screens: */
+    window.addEventListener("touchstop", slideFinish);
+    function slideReady(e) {
+      /* Prevent any other actions that may occur when moving over the image: */
+      e.preventDefault();
+      /* The slider is now clicked and ready to move: */
+      clicked = 1;
+      /* Execute a function when the slider is moved: */
+      window.addEventListener("mousemove", slideMove);
+      window.addEventListener("touchmove", slideMove);
+    }
+    function slideFinish() {
+      /* The slider is no longer clicked: */
+      clicked = 0;
+    }
+    function slideMove(e) {
+      var pos;
+      /* If the slider is no longer clicked, exit this function: */
+      if (clicked == 0) return false;
+      /* Get the cursor's x position: */
+      pos = getCursorPos(e)
+      /* Prevent the slider from being positioned outside the image: */
+      if (pos < 0) pos = 0;
+      if (pos > w) pos = w;
+      /* Execute a function that will resize the overlay image according to the cursor: */
+      slide(pos);
+    }
+    function getCursorPos(e) {
+      var a, x = 0;
+      e = e || window.event;
+      /* Get the x positions of the image: */
+      a = img.getBoundingClientRect();
+      /* Calculate the cursor's x coordinate, relative to the image: */
+      x = e.pageX - a.left;
+      /* Consider any page scrolling: */
+      x = x - window.pageXOffset;
+      return x;
+    }
+    function slide(x) {
+      /* Resize the image: */
+      img.style.width = x + "px";
+      /* Position the slider: */
+      slider.style.left = img.offsetWidth - (slider.offsetWidth / 2) + "px";
+    }
+  }
+        }
+    initComparisons();
 </script>
