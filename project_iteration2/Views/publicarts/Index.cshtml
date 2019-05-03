@@ -20,6 +20,10 @@
         transition: 0.3s;
         position: relative;
     }
+    .card:hover{
+        transform:scale(1.2);
+        background:lightgrey;
+    }
 
         /* On mouse-over, add a deeper shadow */
         .card:hover {
@@ -265,18 +269,19 @@
 @foreach (var item in Model)
 
 {
-    <div class="col-md-4">
-        <div class="card" style="margin: 20px; width: 30rem; height: 250px;">
-            <img class="card-img-top" src="~/Content/picture/@item.Id/image1.jpg" style="width: 100%; height: 150px;">
-            <div class="card-body">
-                <h4 class="card-subtitle" style="padding-left: 20px; padding-top: 10px;"> <b> @Html.DisplayFor(modelItem => item.Gallery_Name , new{ sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })</b></h4>
+<div class="col-md-4">
+    <a href="~/publicarts/Details/@item.Id"  data-toggle="popover" data-trigger="hover" data-content="Some content">
+    <div class="card" style="margin: 20px; width: 30rem; height: 250px;">
+        <img class="card-img-top" src="~/Content/picture/@item.Id/image1.jpg" style="width: 100%; height: 150px;">
+        <div class="card-body">
+            <h4 class="card-subtitle" style="padding-left: 20px; padding-top: 10px; color:black;"> <b> @Html.DisplayFor(modelItem => item.Gallery_Name, new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })</b></h4>
 
-                <div style=" position: absolute; padding-bottom: 10px; padding-left:20px; margin:0;">
-                    @Html.ActionLink("Details", "Details", "publicarts", new {id = item.Id}, new {@class = "btn btn-dark "})
-                </div>
+            <div style=" position: absolute; padding-bottom: 10px; padding-left:20px; margin:0;">
+                @Html.ActionLink("Details", "Details", "publicarts", new { id = item.Id }, new { @class = "btn btn-dark " })
             </div>
         </div>
-    </div>
+    </div></a>
+</div>
 }
     <br/>
  

@@ -169,6 +169,8 @@
     <Content Include="Content\images\Homepage1.png" />
     <Content Include="Content\images\Homepage2.png" />
     <Content Include="Content\images\Homepage3.png" />
+    <Content Include="Content\images\mapIcon.svg" />
+    <Content Include="Content\images\toTheTop.svg" />
     <Content Include="Content\landingpage.css" />
     <Content Include="Content\lineChart.js" />
     <Content Include="Content\PagedList.css" />

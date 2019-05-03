@@ -4,16 +4,22 @@
     ViewBag.Title = "Details";
 }
 <style>
-    #secondSection {
-         position: relative;
-    top: 100vh;
-    margin: 5rem;
-    width: 100%;
+    body {
+        margin-left: -6%;
+        overflow-x: hidden;
     }
+
+    #secondSection {
+        position: relative;
+        top: 100vh;
+        margin: 5rem;
+        width: 100%;
+    }
+
     #lineChart {
-    position: absolute;
-    top: 120px;
-}
+        position: absolute;
+        top: 120px;
+    }
 
     #instructions {
         position: static;
@@ -47,17 +53,17 @@
         min-width: 200%;
     }
 
-   .forthBanner {
-    position: absolute;
-    top: 100vh;
-    margin-top: 0rem;
-    left: -5rem;
-    right: -5rem;
-    z-index: -1;    
-}
+    .forthBanner {
+        position: absolute;
+        top: 100vh;
+        margin-top: -5rem;
+        left: -5rem;
+        right: -5rem;
+        z-index: -1;
+    }
 </style>
 <div class="navbar navbar-inverse navbar-fixed-top" style="width:100vw; ">
-    <div class="container">
+    <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="icon-bar"></span>
@@ -68,6 +74,12 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
+                <li>
+                    <a href="#secondSection">Foot Traffic</a>
+                </li>
+                <li>
+                    <a href="#map">MAP</a>
+                </li>
                 <li>
                     @Html.ActionLink("BACK ", "Index", "publicarts")
                 </li>
@@ -80,39 +92,41 @@
     </div>
 </div>
 <div class="temp"></div>
-<div class="first-block"></div>
+<a name="first">
+    <div class="first-block"></div>
+</a>
 <div class="second-block"></div>
- @{  var temp = @Model.Unisex;
-     double toilets = Convert.ToDouble(@Model.Toilet_);
-     int? NoOfCf = @Model.NoOFCF;
-     int? NoOfBsn = @Model.NoOfBsn;
-     int? NoOfArt = @Model.NoOfArt;
-     int? transport = @Model.Parking;
-     int? foot = @Model.MonPed + @Model.TuesPed + @Model.WedPed + @Model.ThursPed + @Model.FriPed + @Model.SatPed + @Model.SunPed;
-     int? MonPed1 = @Model.MonPed;
-     int? TuesPed1 = @Model.TuesPed;
-     int? WedPed1 = @Model.WedPed;
-     int? ThursPed1 = @Model.ThursPed;
-     int? FriPed1 = @Model.FriPed;
-     int? SatPed1 = @Model.SatPed;
-     int? SunPed1 = @Model.SunPed;
+@{ var temp = @Model.Unisex;
+    double toilets = Convert.ToDouble(@Model.Toilet_);
+    int? NoOfCf = @Model.NoOFCF;
+    int? NoOfBsn = @Model.NoOfBsn;
+    int? NoOfArt = @Model.NoOfArt;
+    int? transport = @Model.Parking;
+    int? foot = @Model.MonPed + @Model.TuesPed + @Model.WedPed + @Model.ThursPed + @Model.FriPed + @Model.SatPed + @Model.SunPed;
+    int? MonPed1 = @Model.MonPed;
+    int? TuesPed1 = @Model.TuesPed;
+    int? WedPed1 = @Model.WedPed;
+    int? ThursPed1 = @Model.ThursPed;
+    int? FriPed1 = @Model.FriPed;
+    int? SatPed1 = @Model.SatPed;
+    int? SunPed1 = @Model.SunPed;
 
-     int? MonPed2 = @Model.MonPed2;
-     int? TuesPed2 = @Model.TuesPed2;
-     int? WedPed2 = @Model.WedPed2;
-     int? ThursPed2 = @Model.ThursPed2;
-     int? FriPed2 = @Model.FriPed2;
-     int? SatPed2 = @Model.SatPed2;
-     int? SunPed2 = @Model.SunPed2;
+    int? MonPed2 = @Model.MonPed2;
+    int? TuesPed2 = @Model.TuesPed2;
+    int? WedPed2 = @Model.WedPed2;
+    int? ThursPed2 = @Model.ThursPed2;
+    int? FriPed2 = @Model.FriPed2;
+    int? SatPed2 = @Model.SatPed2;
+    int? SunPed2 = @Model.SunPed2;
 
-     int? MonPed3 = @Model.MonPed3;
-     int? TuesPed3 = @Model.TuesPed3;
-     int? WedPed3 = @Model.WedPed3;
-     int? ThursPed3 = @Model.ThursPed3;
-     int? FriPed3 = @Model.FriPed3;
-     int? SatPed3 = @Model.SatPed3;
-     int? SunPed3 = @Model.SunPed3;
- }
+    int? MonPed3 = @Model.MonPed3;
+    int? TuesPed3 = @Model.TuesPed3;
+    int? WedPed3 = @Model.WedPed3;
+    int? ThursPed3 = @Model.ThursPed3;
+    int? FriPed3 = @Model.FriPed3;
+    int? SatPed3 = @Model.SatPed3;
+    int? SunPed3 = @Model.SunPed3;
+}
 <div class="loader">
     <ul>
         <li>L</li>
@@ -126,30 +140,46 @@
 </div>
 <div class="third-block"></div>
 
-<br/>
+<br />
 <div class="logo">
-   <br/>
+    <br />
 </div>
 <div class="content">
     <div class="heading">
         <!-- INSERT DATA HERE -->
         <span>@Model.Gallery_Name</span>
     </div>
+    <br />
     <div class="desc">
         <!-- INSERT DATA HERE -->
-        <p><b>@Model.Gallery_Type Gallery </b><br/>
-        <b> Suitable Art:</b> @if(@Model.Painting == "Y"){ <span>Painting</span>} 
-                          @if(@Model.Performance == "Y"){<span>Performance</span>}
-                          @if(@Model.Installation == "Y"){<span>Installation</span>}
-                          @if(@Model.Sculpture == "Y"){<span>Sculpture</span>}
-                          @if(@Model.Photography == "Y"){<span>Photography</span>}
-            @if(@Model.Visual == "Y"){<span> Visual Art</span>}</p>
+        <p>
+            <b>@Model.Gallery_Type Gallery </b><br />
+            <b> Suitable Art:</b> @if (@Model.Painting == "Y")
+            {<span>Painting</span>}
+            @if (@Model.Performance == "Y")
+            {<span>Performance</span>}
+            @if (@Model.Installation == "Y")
+            {<span>Installation</span>}
+            @if (@Model.Sculpture == "Y")
+            {<span>Sculpture</span>}
+            @if (@Model.Photography == "Y")
+            {<span>Photography</span>}
+            @if (@Model.Visual == "Y")
+            {<span> Visual Art</span>}
+        </p>
     </div>
+    <br />
     <div class="link">
         <button type="button" onclick="window.location.href='@Model.Website'">VISIT WEBSITE</button>
     </div>
+    <br />
     <div class="amenitiesID">
-        <H4>Amenities</H4>
+        <H4>
+            <b>Amenities</b>
+            <a target="_blank" href="#" title="Hi, Each Gallery can have amenities from Restaurants, Cafes, Office Blocks and Unisex/Accessible Toilets in and around it.">
+                <img src="https://www.clipartmax.com/png/small/216-2165034_openoffice-blue-question-mark-png.png" height="13px" style="margin-bottom: 7px;">
+            </a>
+        </H4>
         @* Toilet data *@
         @if (temp == "Y" && toilets >= 2)
         {
@@ -188,10 +218,10 @@
             <i class="material-icons" title="No of Public arts Nearby: @Model.NoOfArt" style="font-size:36px; color:grey;">wallpaper</i>
 
         }
-        </div>
+    </div>
     <br />
-    <div class="Ranking">
-        Gallery Rating by Amenities:
+    <div class="Ranking" style="top:4px;">
+        <b>Gallery Rating by Amenities :</b>
         @if ((NoOfArt + NoOfBsn + NoOfCf) <= 81)
         {
             <i class="material-icons">star</i>
@@ -232,17 +262,37 @@
             <i class="material-icons">star</i>
             <i class="material-icons">star</i>
         }
+        <a target="_blank" href="#" title="Hi, I am ranked from 1 to 5 stars based on Number of amenities the gallery offers in and around it.">
+            <img src="https://www.clipartmax.com/png/small/216-2165034_openoffice-blue-question-mark-png.png" height="13px" style="margin-bottom:15px;">
+        </a>
     </div>
-    </div>
+    <br />
+    <br />
+    <b>To Learn More <i class="arrow right"style="border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block; padding: 3px;  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);"></i></b>
+    <a href="#map">
+        <img src="~/Content/images/mapIcon.svg" style="height:25px; width:25px; margin-left:3%;"  />
+    </a>
+</div>
 <div class="img">
-    <img class="top" src="~/Content/picture/@Model.Id/image1.jpg"/>
-   
+    <img class="top" src="~/Content/picture/@Model.Id/image1.jpg" />
+
 </div>
 
 <div class="hours">
-     
-</div>
 
+</div>
+<div class="watch">
+    <i class="arrow down" style="border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  left:50%;
+  z-index:1;
+  padding: 3px; transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);"></i>
+</div>
 
 
 
@@ -311,14 +361,16 @@
     });
 
 </script>
-<div id="secondSection" class="container">
-  
+<div id="secondSection" class="container-fluid" style="margin-top:0; margin-right:0;">
+
     <div class="backColor"></div>
-    <h1 style="font-size: 26px;">/ This many people <br>
-        / are walking past</h1>
+    <h1 style="font-size: 26px;">
+        / This many people <br>
+        / are walking past
+    </h1>
     <h3 style="font-size: 16px;">More people walking past on the days this gallery is open, the better for your business!</h3>
     <!-- INSERT OPENING HOURS-->
-    <div class="hours" >
+    <div class="hours">
         <h1> Opening Hours </h1>
         <ul>
             <li>Mon: @Model.Monday </li>
@@ -328,27 +380,27 @@
             <li>Fri: @Model.Friday</li>
             <li>Sat: @Model.Saturday</li>
             <li>Sun: @Model.Sunday</li>
-            
+
         </ul>
     </div>
     <!-- INSERT PEDESTRIAN CHART HERE-->
     <canvas id="lineChart" height="400" width="600"></canvas>
-    
 
-    <!--<div class="thirdBanner"><img src="deco2.png" alt="" style="height: 200px; width: 100%;"></div> -->
     <div class="thirdBanner"></div>
 </div>
 <div id="thirdSection" style=" position: relative;
     top: 200vh;
-    margin: 5rem;"class="container">
-        
-    <div class="dummy2">
+    margin: 5rem;" class="container">
+
+    <div class="dummy2" style="margin-top: -150px;">
         <h1>What is near this gallery within a</h1>
-        <h4 style=" font-family: "Roboto Lt", sans-serif;
+        <h4 style=" font-family: " Roboto Lt", sans-serif;
             font-size: 4rem;
             text-align: center;
             letter-spacing: 0px;
-            text-decoration-line: overline;">500m</h4>
+            text-decoration-line: overline;">
+            500m
+        </h4>
         <h1>radius?</h1>
     </div>
 
@@ -358,30 +410,34 @@
     <!-- INSERT AMENITY CHART HERE-->
     <canvas id="radarChart" style=" position: absolute;
     left: 200px;
-    top: 200px;" height="400" width="800"></canvas>
-    
-        
+    top: 20px;" height="400" width="800"></canvas>
+
+
     <div class="forthBanner"><img src="~/Content/images/deco2.png" alt="" style="height: auto; width: 100vw;"></div>
 
 </div>
 <!-- FORTH SECTION STARTS HERE-->
 <!--Map Section-->
-<div id="forthSection" class="container">
-    <div class="dummy3">
+<div id="forthSection" class="container" style="margin-bottom:100px; margin-top:100px;">
+    <div class="dummy3" style="margin-top:100px;">
         <h1>How to get around if you are at this gallery?</h1>
         <h3 style="font-size:16px;">If you are after cafes, restaurants, bars, officeworks and anything else.</h3>
 
         <!-- INSERT THE MAP HERE-->
-        <div class="map">
-            <div  id="map" style="position:absolute;  height:300px; width: 600px;"></div>
-            <div class="container">
-                <div id="instructions"></div>
+        <a name="map">
+            <div class="map" style="margin-bottom:100px;">
+                <div id="map" style="position:absolute;  height:400px; width: 700px; margin-bottom:75px;"></div>
+                <div class="container">
+
+                </div>
             </div>
-        </div>
+        </a>
 
     </div>
+    <a href="#first"><img style="float:right; bottom:0px; height:35px; width:35px;" src="~/Content/images/toTheTop.svg" /></a>
 
 </div>
+
 <script>
     // radar chart
     var NoOfCF1 = @NoOfArt;
@@ -519,7 +575,7 @@
     var friPed1 = @FriPed1;
     var satPed1 = @SatPed1;
     var sunPed1 = @SunPed1;
-    // line chart variables 2 
+    // line chart variables 2
     var monPed2 = @MonPed2;
     var tuesPed2 = @TuesPed2;
     var wedPed2 = @WedPed2;
