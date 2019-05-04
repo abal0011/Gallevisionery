@@ -30,16 +30,35 @@
 </head>
 <body>
 
-<div class="container body-content">
-    @RenderBody()
-    <hr />
-    
-</div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
 
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
-@RenderSection("scripts", required: false)
+    </div>
 
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <!-- Default Statcounter code for gallevisionery iteration 2  -->
+    <script type="text/javascript">
+        var sc_project = 12000656;
+        var sc_invisible = 1;
+        var sc_security = "bf8578cc";
+        var sc_https = 1;
+    </script>
+    <script type="text/javascript"
+            src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter">
+            <a title="Web Analytics"
+               href="https://statcounter.com/" target="_blank">
+                <img class="statcounter"
+                     src="https://c.statcounter.com/12000656/0/bf8578cc/1/" alt="Web
+Analytics">
+            </a>
+        </div>
+    </noscript>
+    <!-- End of Statcounter Code -->
 </body>
 
 

@@ -124,8 +124,7 @@ namespace project_iteration2.Controllers
                     break;
             }
 
-            int pageSize = 3;
-            int pageNumber = (page ?? 1);
+          
 
 
 
@@ -139,6 +138,7 @@ namespace project_iteration2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            
             publicart publicart = db.publicarts.Find(id);
             if (publicart == null)
             {

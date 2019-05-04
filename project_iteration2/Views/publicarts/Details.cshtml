@@ -315,13 +315,17 @@
     </div>
     <br />
     <br />
-    <b>To Learn More <i class="arrow right"style="border: solid black;
+    <div class="learn">
+        <b>
+            To Learn More <i class="arrow right" style="border: solid black;
   border-width: 0 3px 3px 0;
   display: inline-block; padding: 3px;  transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);"></i></b>
-    <a href="#map">
-        <img id="mapIcon" src="~/Content/images/mapIcon.svg" style="height:25px; width:25px; margin-left:3%;"  />
-    </a>
+  -webkit-transform: rotate(-45deg);"></i>
+        </b>
+        <a href="#map">
+            <img id="mapIcon" src="~/Content/images/mapIcon.svg" style="height:25px; width:25px; margin-left:3%;" />
+        </a>
+    </div>
 </div>
 @* Image comparison Experiment *@
 <div class="img-comp-container">
@@ -352,7 +356,6 @@
 
 
 
-@Html.ActionLink("Back to List", "Index")
 <script type="text/javascript">
     TweenMax.from(".logo", 1.6, {
         delay: 6.4,
@@ -415,7 +418,18 @@
         y: 30,
         ease: Expo.easeInOut
     });
-
+        TweenMax.from(".learn", 1.6, {
+        delay: 6.8,
+        opacity: 0,
+        y: 30,
+        ease: Expo.easeInOut
+    });
+      TweenMax.from(".img-comp-container", 1.6, {
+        delay: 6.8,
+        opacity: 0,
+        y: 30,
+        ease: Expo.easeInOut
+    });
 </script>
 <div id="secondSection" class="container-fluid" style="margin-top:-33%; margin-right:0;">
 
