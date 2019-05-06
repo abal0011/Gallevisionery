@@ -173,7 +173,7 @@
                     @Html.ActionLink("BACK", "Index", "Home")
                 </li>
                 <li>
-                    @Html.ActionLink("COMPARE-GALLERIES", "compare", "publicarts")
+                    @Html.ActionLink("COMPARE-GALLERIES", "compare2", "publicarts")
                 </li>
             </ul>
 
@@ -201,9 +201,9 @@
 
                  Type dropdown: @Html.DropDownList("GallType", null, "Gallery Type", new { @class = "btn dropdown-toggle" })
 
-             <label class="btn btn-light" style="position: relative; padding:10px; margin:5px;">
+             @*<label class="btn btn-light" style="position: relative; padding:10px; margin:5px;">
                  @Html.CheckBox("toilet", false, new { @class = "custom-control-input" } ) <b>Accesible Toilets</b>
-             </label>
+             </label>*@
              
                  <input type="submit" value="Search" class="btn btn-dark" style="position:static; float: right; margin-top:20px; margin-right:5%;" />
              
@@ -278,6 +278,8 @@
 
             <div style=" position: absolute; padding-bottom: 10px; padding-left:20px; margin:0;">
                 @Html.ActionLink("Details", "Details", "publicarts", new { id = item.Id }, new { @class = "btn btn-dark " })
+                @Html.ActionLink("Compare", "compare", "publicarts", new { id = item.Id }, new { @class = "btn btn-dark " })
+
             </div>
         </div>
     </div></a>

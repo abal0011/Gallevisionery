@@ -34,6 +34,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>preview</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,6 +44,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>preview</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -176,83 +178,54 @@
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\picture\10\image1.jpg" />
     <Content Include="Content\picture\10\image2.jpg" />
-    <Content Include="Content\picture\10\image3.jpg" />
     <Content Include="Content\picture\11\image1.jpg" />
     <Content Include="Content\picture\11\image2.jpg" />
-    <Content Include="Content\picture\11\image3.jpg" />
     <Content Include="Content\picture\12\image1.jpg" />
     <Content Include="Content\picture\12\image2.jpg" />
-    <Content Include="Content\picture\12\image3.jpg" />
     <Content Include="Content\picture\13\image1.jpg" />
     <Content Include="Content\picture\13\image2.jpg" />
-    <Content Include="Content\picture\13\image3.jpg" />
     <Content Include="Content\picture\14\image1.jpg" />
     <Content Include="Content\picture\14\image2.jpg" />
-    <Content Include="Content\picture\14\image3.jpg" />
     <Content Include="Content\picture\15\image1.jpg" />
     <Content Include="Content\picture\15\image2.jpg" />
-    <Content Include="Content\picture\15\image3.jpg" />
     <Content Include="Content\picture\16\image1.jpg" />
     <Content Include="Content\picture\16\image2.jpg" />
-    <Content Include="Content\picture\16\image3.jpg" />
     <Content Include="Content\picture\17\image1.jpg" />
     <Content Include="Content\picture\17\image2.jpg" />
-    <Content Include="Content\picture\17\image3.jpg" />
     <Content Include="Content\picture\18\image1.jpg" />
     <Content Include="Content\picture\18\image2.jpg" />
-    <Content Include="Content\picture\18\image3.jpg" />
     <Content Include="Content\picture\19\image1.jpg" />
     <Content Include="Content\picture\19\image2.jpg" />
-    <Content Include="Content\picture\19\image3.jpg" />
     <Content Include="Content\picture\1\image1.jpg" />
-    <Content Include="Content\picture\1\image2.jpeg" />
     <Content Include="Content\picture\1\image2.jpg" />
-    <Content Include="Content\picture\1\image2.webp" />
-    <Content Include="Content\picture\1\image3.jpeg" />
-    <Content Include="Content\picture\1\image3.jpg" />
-    <Content Include="Content\picture\1\image3.webp" />
     <Content Include="Content\picture\20\image1.jpg" />
     <Content Include="Content\picture\20\image2.jpg" />
-    <Content Include="Content\picture\20\image3.jpg" />
     <Content Include="Content\picture\21\image1.jpg" />
     <Content Include="Content\picture\21\image2.jpg" />
-    <Content Include="Content\picture\21\image3.jpg" />
     <Content Include="Content\picture\22\image1.jpg" />
     <Content Include="Content\picture\22\image2.jpg" />
-    <Content Include="Content\picture\22\image3.jpg" />
     <Content Include="Content\picture\23\image1.jpg" />
     <Content Include="Content\picture\23\image2.jpg" />
-    <Content Include="Content\picture\23\image3.jpg" />
     <Content Include="Content\picture\24\image1.jpg" />
     <Content Include="Content\picture\24\image2.jpg" />
-    <Content Include="Content\picture\24\image3.jpg" />
     <Content Include="Content\picture\25\image1.jpg" />
     <Content Include="Content\picture\25\image2.jpg" />
-    <Content Include="Content\picture\25\image3.jpg" />
     <Content Include="Content\picture\2\image1.jpg" />
     <Content Include="Content\picture\2\image2.jpg" />
-    <Content Include="Content\picture\2\image3.jpg" />
     <Content Include="Content\picture\3\image1.jpg" />
     <Content Include="Content\picture\3\image2.jpg" />
-    <Content Include="Content\picture\3\image3.jpg" />
     <Content Include="Content\picture\4\image1.jpg" />
     <Content Include="Content\picture\4\image2.jpg" />
-    <Content Include="Content\picture\4\image3.jpg" />
     <Content Include="Content\picture\5\image1.JPG" />
     <Content Include="Content\picture\5\image2.jpg" />
-    <Content Include="Content\picture\5\image3.JPG" />
     <Content Include="Content\picture\6\image1.jpg" />
     <Content Include="Content\picture\6\image2.jpg" />
-    <Content Include="Content\picture\6\image3.jpg" />
     <Content Include="Content\picture\7\image1.jpg" />
     <Content Include="Content\picture\7\image2.jpg" />
-    <Content Include="Content\picture\7\image3.jpg" />
     <Content Include="Content\picture\8\image1.jpg" />
     <Content Include="Content\picture\8\image2.jpg" />
-    <Content Include="Content\picture\8\image3.jpg" />
     <Content Include="Content\picture\9\image1.jpg" />
     <Content Include="Content\picture\9\image2.jpg" />
-    <Content Include="Content\picture\9\image3.jpg" />
     <Content Include="Content\radarChart.js" />
     <Content Include="Content\temp.gif" />
     <Content Include="Content\thirdPg.css" />
@@ -296,6 +269,7 @@
     <Content Include="Views\publicarts\Edit.cshtml" />
     <Content Include="Views\publicarts\Index.cshtml" />
     <Content Include="Views\publicarts\compare.cshtml" />
+    <Content Include="Views\publicarts\compare2.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

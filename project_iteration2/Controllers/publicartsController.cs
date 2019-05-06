@@ -16,7 +16,29 @@ namespace project_iteration2.Controllers
     {
         private publicartv1 db = new publicartv1();
 
-        public ActionResult compare(string option1, string option2)
+        public ActionResult compare2(string? option1, string? option2)
+        {
+            var options = from m in db.publicarts select m;
+            var option1Lst = new List<string>();
+            var option1Qry = from o in db.publicarts orderby o.Gallery_Name select o.Gallery_Name;
+            option1Lst.AddRange(option1Qry.Distinct());
+            ViewBag.option1 = new SelectList(option1Lst);
+
+            var option2Lst = new List<string>();
+            var option2Qry = from p in db.publicarts orderby p.Gallery_Name select p.Gallery_Name;
+            option2Lst.AddRange(option2Qry.Distinct());
+            ViewBag.option2 = new SelectList(option2Lst);
+
+            
+            if (!string.IsNullOrEmpty(option1) && !string.IsNullOrEmpty(option2))
+            {
+                options = options.Where(x => x.Gallery_Name == option1 || x.Gallery_Name == option2);
+            }
+            return View(options.ToList());
+
+        }
+
+        public ActionResult compare(int? id, string option1, string option2)
         {
             var option1Lst = new List<string>();
             var option1Qry = from o in db.publicarts orderby o.Gallery_Name select o.Gallery_Name;
@@ -26,6 +48,11 @@ namespace project_iteration2.Controllers
             var option2Qry = from p in db.publicarts orderby p.Gallery_Name select p.Gallery_Name;
             option2Lst.AddRange(option2Qry.Distinct());
             ViewBag.option2 = new SelectList(option2Lst);
+
+            var green = from q in db.publicarts where q.Id == id select q.Gallery_Name;
+
+            ViewBag.showSomething = green;
+
             var options = from m in db.publicarts select m;
             
             if (!string.IsNullOrEmpty(option1) && !string.IsNullOrEmpty(option2))
