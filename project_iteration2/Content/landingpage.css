@@ -49,10 +49,12 @@ html{
     opacity: 0.9;
 }
 
+/*Add margin-top*/
 .container h3{
     font-size: 4rem;
     line-height: 0;
-    padding: 1rem 0;
+    margin-top:50px; 
+    padding: 1rem ;
 }
 
 .container h4{
@@ -73,7 +75,8 @@ html{
 
 
 .container h6{
-    font-size: 1rem;
+/*change font size from 1 to 2rem*/
+    font-size: 2rem;
     line-height: 0;
     padding: 1rem 0;
 }
@@ -87,20 +90,22 @@ html{
     text-transform: initial;
 }
 
-
 .between{
-    height:60rem;
+/*Change height*/
+    height:15rem;
     position: relative;
 }
 
 .bg{
+/*Change font size*/
     width: 100%;
+    font-size: 2rem;
     background-color: rgba(0,0,0,.5);
     padding: 2rem 0;
 }
 
 .words{
-    position: absolute;
+    position:relative;
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
@@ -129,4 +134,14 @@ html{
     overflow: hidden;
 
 }
+
+.footer {
+    position: fixed;
+    bottom: 20px;
+}
+
+.footer p{
+    font-size: 16px;
+}
+
 

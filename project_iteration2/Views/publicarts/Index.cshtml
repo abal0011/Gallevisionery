@@ -154,7 +154,9 @@
     .unhidden {
         visibility: visible;
     } 
-
+    .drop1 , .drop2 {
+        font-size:12px;
+    }
 
 </style>
 <div class="navbar navbar-inverse navbar-fixed-top">
@@ -168,12 +170,9 @@
             @Html.ActionLink("GALLEVISIONERY", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
         </div>
         <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav navbar-right">
                 <li>
                     @Html.ActionLink("BACK", "Index", "Home")
-                </li>
-                <li>
-                    @Html.ActionLink("COMPARE-GALLERIES", "compare2", "publicarts")
                 </li>
             </ul>
 
@@ -192,20 +191,20 @@
     @using (Html.BeginForm("Index","publicarts", FormMethod.Get))
     {<div class="md-form">
          <p>
-             Search By Name : 
+                 Search By Name 
                  @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
                  
            
-                 Gallery Region @Html.DropDownList("street", null, "Gallery Region", new { @class = "btn dropdown-toggle" })
+                 Gallery Region @Html.DropDownList("street", null, "Choose one", new { @class = "btn dropdown-toggle drop1" })
 
 
-                 Type dropdown: @Html.DropDownList("GallType", null, "Gallery Type", new { @class = "btn dropdown-toggle" })
+                 Gallery Type @Html.DropDownList("GallType", null, "Choose one", new { @class = "btn dropdown-toggle drop2" })
 
              @*<label class="btn btn-light" style="position: relative; padding:10px; margin:5px;">
                  @Html.CheckBox("toilet", false, new { @class = "custom-control-input" } ) <b>Accesible Toilets</b>
              </label>*@
              
-                 <input type="submit" value="Search" class="btn btn-dark" style="position:static; float: right; margin-top:20px; margin-right:5%;" />
+                 <input type="submit" value="Search" class="btn btn-dark" style="position:static; float: right; margin-top:20px; margin-right:10%;" />
              
              <br />
                  <br />
@@ -276,8 +275,10 @@
         <div class="card-body">
             <h4 class="card-subtitle" style="padding-left: 20px; padding-top: 10px; color:black;"> <b> @Html.DisplayFor(modelItem => item.Gallery_Name, new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })</b></h4>
 
-            <div style=" position: absolute; padding-bottom: 10px; padding-left:20px; margin:0;">
+            <div style=" position: absolute; padding-bottom: 10px; padding-left:20px; margin:0; ">
                 @Html.ActionLink("Details", "Details", "publicarts", new { id = item.Id }, new { @class = "btn btn-dark " })
+                
+            
                 @Html.ActionLink("Compare", "compare", "publicarts", new { id = item.Id }, new { @class = "btn btn-dark " })
 
             </div>

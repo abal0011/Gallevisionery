@@ -4,107 +4,116 @@
     ViewBag.Title = "Details";
 }
 <style>
-    body {
-        margin-left: -6%;
-        overflow-x: hidden;
-    }
 
-    #secondSection {
-        position: relative;
-        top: 100vh;
-        margin: 5rem;
-        width: 100%;
-    }
+        body {
+            margin-left: -6%;
+            overflow-x: hidden;
+        }
 
-    #lineChart {
-        position: absolute;
-        top: 120px;
-    }
+        #secondSection {
+            position: relative;
+            top: 100vh;
+            margin: 5rem;
+            width: 100%;
+        }
 
-    #instructions {
-        position: static;
-        margin: 0px;
-        width: 30%;
-        top: 0;
-        bottom: 20%;
-        padding: 5px;
-        background-color: rgba(255, 255, 255, 0.9);
-        overflow-y: scroll;
-        font-family: sans-serif;
-        font-size: 0.8em;
-        line-height: 2em;
-        float: right;
-    }
+        #lineChart {
+            position: absolute;
+            top: 120px;
+        }
 
-    .duration {
-        font-size: 2em;
-    }
+        #instructions {
+            position: static;
+            margin: 0px;
+            width: 30%;
+            top: 0;
+            bottom: 20%;
+            padding: 5px;
+            background-color: rgba(255, 255, 255, 0.9);
+            overflow-y: scroll;
+            font-family: sans-serif;
+            font-size: 0.8em;
+            line-height: 2em;
+            float: right;
+        }
 
-    .geocoder {
-        position: relative;
-        z-index: 1;
-        width: 200%;
-        left: 50%;
-        margin-left: -25%;
-        top: 20px;
-    }
+        .duration {
+            font-size: 2em;
+        }
 
-    .mapboxgl-ctrl-geocoder {
-        min-width: 200%;
-    }
+        .geocoder {
+            position: relative;
+            z-index: 1;
+            width: 200%;
+            left: 50%;
+            margin-left: -25%;
+            top: 20px;
+        }
 
-    .forthBanner {
-        position: absolute;
-        top: 100vh;
-        margin-top: -5rem;
-        left: -5rem;
-        right: -5rem;
-        z-index: -1;
-    }
-    /*Trial of image slider*/
-    * {box-sizing: border-box;}
+        .mapboxgl-ctrl-geocoder {
+            min-width: 200%;
+        }
 
-.img-comp-container {
-  position: relative;
-  margin-left:53.5%;
-  margin-top:15%;
-  height: 250px; /*should be the same height as the images*/
-}
 
-.img-comp-img {
-  position: absolute;
-  width: auto;
-  height: auto;
-  overflow: hidden;
-}
+        .forthBanner {
+            position: absolute;
+            top: 100vh;
+            margin-top: -5rem;
+            left: -5rem;
+            right: -5rem;
+            z-index: -1;
+        }
+        /*Trial of image slider*/
+        * {
+            box-sizing: border-box;
+        }
 
-.img-comp-img img {
-  display: block;
-  vertical-align: middle;
-}
+        .img-comp-container {
+            position: relative;
+            margin-left: 53.5%;
+            margin-top: 15%;
+            height: 250px; /*should be the same height as the images*/
+        }
 
-.img-comp-slider {
-  position: absolute;
-  z-index: 9;
-  cursor: ew-resize;
-  /*set the appearance of the slider:*/
-  width: 40px;
-  height: 40px;
-  background-color: #2196F3;
-  opacity: 0.7;
-  border-radius: 50%;
-}
-#mapIcon:hover {
-    transform: scale(1.5);
-      fill:gold;
-    background:gold;
-    transition: background 0.5s, transform 0.5s ease-out, fill 0.5s;
-}
-#toTop:hover {
-    transform: scale(1.5);
-      
-    transition: background 0.5s, transform 0.5s ease-out, fill 0.5s;
-}
+        .img-comp-img {
+            position: absolute;
+            width: auto;
+            height: auto;
+            overflow: hidden;
+        }
+
+            .img-comp-img img {
+                display: block;
+                vertical-align: middle;
+            }
+
+        .img-comp-slider {
+            position: absolute;
+            z-index: 9;
+            cursor: ew-resize;
+            /*set the appearance of the slider:*/
+            width: 40px;
+            height: 40px;
+            background-color: #2196F3;
+            opacity: 0.7;
+            border-radius: 50%;
+        }
+        /*#mapIcon:hover {
+        transform: scale(1.5);
+          fill:gold;
+        background:gold;
+        transition: background 0.5s, transform 0.5s ease-out, fill 0.5s;
+    }*/
+
+        #mapButton:hover {
+            transform: scale(1.2);
+            transition: background 0.5s, transform 0.5s ease-out, fill 0.5s;
+        }
+
+        #toTop:hover {
+            transform: scale(1.5);
+            transition: background 0.5s, transform 0.5s ease-out, fill 0.5s;
+        }
 </style>
 <div class="navbar navbar-inverse navbar-fixed-top" style="width:100vw; ">
     <div class="container-fluid">
@@ -117,19 +126,12 @@
             @Html.ActionLink("GALLEVISIONERY", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
         </div>
         <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="#secondSection">Foot Traffic</a>
-                </li>
-                <li>
-                    <a href="#map">MAP</a>
-                </li>
+            <ul class="nav navbar-nav navbar-right" style="margin-right:3%;">
+
                 <li>
                     @Html.ActionLink("BACK ", "Index", "publicarts")
                 </li>
-                <li>
-                    @Html.ActionLink("COMPARE-GALLERIES", "compare", "publicarts")
-                </li>
+
             </ul>
 
         </div>
@@ -189,7 +191,7 @@
     <br />
 </div>
 <div class="content">
-    <div class="heading">
+    <div class="heading" style="margin-top:5%;">
         <!-- INSERT DATA HERE -->
         <span>@Model.Gallery_Name</span>
     </div>
@@ -220,11 +222,11 @@
     <div class="amenitiesID">
         <H4>
             <b>Amenities</b>
-            <a target="_blank" href="#!" title="Hi, Each Gallery can have amenities from
-               Restaurants,Cafes, Office Blocks and 
-               Unisex/Accessible Toilets in and around it.">
-                <img src="https://www.clipartmax.com/png/small/216-2165034_openoffice-blue-question-mark-png.png" height="13px" style="margin-bottom: 7px;">
-            </a>
+
+            <img src="https://www.clipartmax.com/png/middle/62-625452_question-mark-question-mark-bubble-png.png" title="Hi, Each Gallery can have amenities from
+               Restaurants,Cafes, Office Blocks and
+               Unisex/Accessible Toilets in and around it." height="13px" style="margin-bottom: 7px;">
+
         </H4>
         @* Toilet data *@
         @if (temp == "Y" && toilets >= 2)
@@ -308,25 +310,57 @@
             <i class="material-icons">star</i>
             <i class="material-icons">star</i>
         }
-        <a target="_blank" href="#" title="Hi, I am ranked from 1 to 5 stars based on 
-           Number of amenities the gallery offers in and around it.">
-            <img src="https://www.clipartmax.com/png/small/216-2165034_openoffice-blue-question-mark-png.png" height="13px" style="margin-bottom:15px;">
-        </a>
+
+        <img src="https://www.clipartmax.com/png/middle/62-625452_question-mark-question-mark-bubble-png.png" title="Hi, I am ranked from 1 to 5 stars based on
+           Number of amenities the gallery offers in and around it." height="13px" style="margin-bottom:15px;">
+
     </div>
     <br />
     <br />
     <div class="learn">
         <b>
-            To Learn More <i class="arrow right" style="border: solid black;
-  border-width: 0 3px 3px 0;
-  display: inline-block; padding: 3px;  transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);"></i>
+            @*<i class="arrow right" style="border: solid black;
+                border-width: 0 3px 3px 0;
+                display: inline-block; padding: 3px;  transform: rotate(-45deg);
+                -webkit-transform: rotate(-45deg);"></i>*@
         </b>
-        <a href="#map">
-            <img id="mapIcon" src="~/Content/images/mapIcon.svg" style="height:25px; width:25px; margin-left:3%;" />
-        </a>
+        @*<a href="#map">
+                <img id="mapIcon" src="~/Content/images/mapIcon.svg" style="height:25px; width:25px; margin-left:3%;" />
+            </a>*@
+        <button type="button" id="mapButton" class="btn btn-info btn-lg btn-dark" style="width:auto;" data-toggle="modal" data-target="#myModal"> <span><img id="mapIcon" src="~/Content/images/mapIcon.svg" style="height:20px; width:20px; margin-right:2px; margin-bottom:5px;" /><span><b>Open Map</b></span> </span></button>
     </div>
 </div>
+@* modal experiment *@
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">
+                    Map of <b> @Model.Gallery_Name </b>
+                    <span>
+                        <img src="https://www.clipartmax.com/png/middle/62-625452_question-mark-question-mark-bubble-png.png" title="Hi, Search for places nearby
+               like Restaurants,Cafes, Office Blocks and
+               Unisex/Accessible Toilets in and around it." height="13px">
+                    </span>
+                </h4>
+
+            </div>
+            <div style="position: relative; padding:15px; ">
+
+                <div id="map" style="position: relative; height:400px; width:auto;"></div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 @* Image comparison Experiment *@
 <div class="img-comp-container">
     <div class="img-comp-img">
@@ -337,9 +371,9 @@
     </div>
 </div>
 @*<div class="img">
-    <img class="top" src="~/Content/picture/@Model.Id/image1.jpg" />
+        <img class="top" src="~/Content/picture/@Model.Id/image1.jpg" />
 
-</div>*@
+    </div>*@
 
 <div class="hours">
 
@@ -418,13 +452,13 @@
         y: 30,
         ease: Expo.easeInOut
     });
-        TweenMax.from(".learn", 1.6, {
+    TweenMax.from(".learn", 1.6, {
         delay: 6.8,
         opacity: 0,
         y: 30,
         ease: Expo.easeInOut
     });
-      TweenMax.from(".img-comp-container", 1.6, {
+    TweenMax.from(".img-comp-container", 1.6, {
         delay: 6.8,
         opacity: 0,
         y: 30,
@@ -458,13 +492,15 @@
 
     <div class="thirdBanner"></div>
 </div>
-<div id="thirdSection" style=" position: relative;
+
+@*  *@
+@*<div id="thirdSection" style=" position: relative;
     top: 200vh;
     margin: 5rem;" class="container">
 
     <div class="dummy2" style="margin-top: -150px;">
         <h1>What is near this gallery within a</h1>
-        <h4 style=" font-family: " Roboto Lt", sans-serif;
+        <h4 style=" font-family: Roboto Lt, sans-serif;
             font-size: 4rem;
             text-align: center;
             letter-spacing: 0px;
@@ -477,36 +513,102 @@
     <!-- INSERT AMENITY ICONS HERE-->
     <div class="icons"></div>
 
-    <!-- INSERT AMENITY CHART HERE-->
+    <!-- INSERT AMENITY CHART HERE left 200px-->
     <canvas id="radarChart" style=" position: absolute;
-    left: 200px;
+    margin-left:auto;
     top: 20px;" height="400" width="800"></canvas>
-
-
-    <div class="forthBanner"><img src="~/Content/images/deco2.png" alt="" style="height: auto; width: 100vw;"></div>
-
+        </div>*@
+<div class="container1" style="display:flex; justify-content:space-around;  position: relative;
+    top: 175vh;
+    margin: 5rem;">
+    <div class="box1" style="flex:6;">
+        <h1>What is near this gallery within a</h1>
+        <h4 style=" font-family: Roboto Lt, sans-serif;
+            font-size: 4rem;
+            text-align: center;
+            letter-spacing: 0px;
+            text-decoration-line: overline;">
+            500m
+        </h4>
+        <h1>radius?</h1>
+    </div>
 </div>
+@{
+    var Average = (Model.MonPed + Model.TuesPed + Model.WedPed + Model.ThursPed + Model.FriPed + Model.SatPed + Model.SunPed) / 7;
+}
+<div class="container2" style="display:flex; flex-wrap:wrap; justify-content:space-around; flex-basis:50%; flex-direction:row; position: relative;
+    top: 175vh;
+    margin: 5rem;">
+    <div class="box1" style="flex:1;">
+        <canvas id="radarChart" height="400" width="800"></canvas>
+    </div>
+    <div class="box2" style="flex:6;">
+        <br />
+        <span>
+            <img src="https://www.clipartmax.com/png/small/15-150472_check-mark-clip-art-tick-mark-transparent-background.png" style="height:13px;" />
+        </span><span>
+            <b> @Model.Gallery_Name </b>has <b>@Model.Toilet_ </b>number of Accessible Toilets Around it.
+        </span>
+        <br />
+        <br />
+        <span>
+            <img src="https://www.clipartmax.com/png/small/15-150472_check-mark-clip-art-tick-mark-transparent-background.png" style="height:13px;" />
+        </span><span>
+            <b> @Model.Gallery_Name </b>has <b>@Model.NoOfArt </b>number of Public Arts Around it.
+        </span>
+        <br />
+        <br />
+        <span>
+            <img src="https://www.clipartmax.com/png/small/15-150472_check-mark-clip-art-tick-mark-transparent-background.png" style="height:13px;" />
+        </span><span>
+            <b> @Model.Gallery_Name </b>has <b>@Model.NoOfBsn </b>number of Business Blocks Around it.
+        </span>
+        <br />
+        <br />
+        <span>
+            <img src="https://www.clipartmax.com/png/small/15-150472_check-mark-clip-art-tick-mark-transparent-background.png" style="height:13px;" />
+        </span><span>
+            <b> @Model.Gallery_Name </b>has <b>@Model.NoOFCF </b>number of Cafes, Bars and Restaurants Around it.
+        </span>
+        <br />
+        <br />
+        <span>
+            <img src="https://www.clipartmax.com/png/small/15-150472_check-mark-clip-art-tick-mark-transparent-background.png" style="height:13px;" />
+        </span><span>
+            <b> @Model.Gallery_Name </b>has <b>@Model.Parking </b>number of Public Parking Space Around it.
+        </span>
+        <br />
+        <br />
+        <span>
+            <img src="https://www.clipartmax.com/png/small/15-150472_check-mark-clip-art-tick-mark-transparent-background.png" style="height:13px;" />
+        </span><span>
+            <b> @Model.Gallery_Name </b>has <b>@Average </b> Average Pedestrian Movement Around it everyday.
+        </span>
+    </div>
+</div>
+@*<div class="forthBanner"><img src="~/Content/images/deco2.png" alt="" style="height: auto; width: 100vw;"></div>*@
+
+@*</div>*@
 <!-- FORTH SECTION STARTS HERE-->
 <!--Map Section-->
-<div id="forthSection" class="container" style="margin-bottom:100px; margin-top:100px;">
-    <div class="dummy3" style="margin-top:100px;">
-        <h1>How to get around if you are at this gallery?</h1>
-        <h3 style="font-size:16px;">If you are after cafes, restaurants, bars, officeworks and anything else.</h3>
+@*<div class="dummy3" style="margin-top:100px;">
+    <h1>How to get around if you are at this gallery?</h1>
+    <h3 style="font-size:16px;">If you are after cafes, restaurants, bars, officeworks and anything else.</h3>*@
 
-        <!-- INSERT THE MAP HERE-->
-        <a name="map">
-            <div class="map" style="margin-bottom:100px;">
-                <div id="map" style="position:absolute;  height:400px; width: 700px; margin-bottom:75px;"></div>
-                <div class="container">
+<!-- INSERT THE MAP HERE-->
+@*<a name="map">
+        <div class="map" style="margin-bottom:100px;">
+            <div id="map" style="position:absolute;  height:400px; width: 700px; margin-bottom:75px;"></div>
+            <div class="container">
 
-                </div>
             </div>
-        </a>
+        </div>
+    </a>*@
 
-    </div>
-    <a href="#first"><img id="toTop" style="float:right; bottom:0px; height:35px; width:35px;" src="~/Content/images/toTheTop.svg" title="To Top" /></a>
+@*</div>
+        <a href="#first"><img id="toTop" style="float:right; bottom:0px; height:35px; width:35px;" src="~/Content/images/toTheTop.svg" title="To Top" /></a>
+    </div>*@
 
-</div>
 
 <script>
     // radar chart
@@ -588,7 +690,7 @@
             datasets: [
                 {
                     label: 'Rating of this gallery out of 5',
-                    backgroundColor: "rgba(220,226,234,0.8)",
+                    backgroundColor: "rgba(220,226,234,0.6)",
                     borderColor: "rgba(195,205,219,1)",
                     borderWidth: 3,
                     pointHoverBorderWidth: 8,
@@ -602,7 +704,7 @@
             maintainAspectRatio: this.maintainAspectRatio,
             title: {
                 display: true,
-                text: "Location evaluation ratings",
+                text: "Location evaluation ratings 0 To 5",
                 fontSize: 16
             },
             label: {
@@ -761,7 +863,11 @@
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11',
         center: [longitude, latitude],
-        zoom: 12.3
+        zoom: 12.3,
+        pitch: 60,
+        bearing: -60
+
+
     });
 
 
@@ -770,6 +876,50 @@
         .setLngLat([longitude, latitude])
         .addTo(map);
 
+// The 'building' layer in the mapbox-streets vector source contains building-height
+// data from OpenStreetMap.
+map.on('load', function() {
+// Insert the layer beneath any symbol layer.
+var layers = map.getStyle().layers;
+
+var labelLayerId;
+for (var i = 0; i < layers.length; i++) {
+if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
+labelLayerId = layers[i].id;
+break;
+    }
+    $('#myModal').on('shown.bs.modal', function() {
+    map.resize();
+  });
+}
+
+map.addLayer({
+'id': '3d-buildings',
+'source': 'composite',
+'source-layer': 'building',
+'filter': ['==', 'extrude', 'true'],
+'type': 'fill-extrusion',
+'minzoom': 9,
+'paint': {
+'fill-extrusion-color': '#aaa',
+
+// use an 'interpolate' expression to add a smooth transition effect to the
+// buildings as the user zooms in
+'fill-extrusion-height': [
+"interpolate", ["linear"], ["zoom"],
+15, 0,
+15.05, ["get", "height"]
+],
+'fill-extrusion-base': [
+"interpolate", ["linear"], ["zoom"],
+15, 0,
+15.05, ["get", "min_height"]
+],
+'fill-extrusion-opacity': .6
+}
+}, labelLayerId);
+
+});
 
     function getRoute(end) {
         // make a directions request using cycling profile
@@ -911,6 +1061,8 @@
     });
     map.addControl(new mapboxgl.NavigationControl());
 
+
+
     //
     function initComparisons() {
   var x, i;
@@ -988,5 +1140,12 @@
     }
   }
         }
-    initComparisons();
+        initComparisons();
+    window.addEventListener("load", function () {
+         fixButton.onclick = function() {
+        map.resize();
+    }
+    });
+    /* Map 2*/
+
 </script>
